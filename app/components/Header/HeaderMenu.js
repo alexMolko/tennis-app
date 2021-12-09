@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom';
 import Toolbar from '@material-ui/core/Toolbar';
 import SearchIcon from '@material-ui/icons/Search';
 import classNames from 'classnames';
-import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import logo from 'dan-images/logo.svg';
 import brand from 'dan-api/dummy/brand';
@@ -21,10 +20,8 @@ import UserMenu from './UserMenu';
 import styles from './header-jss';
 import SearchUi from '../Search/SearchUi';
 
-const elem = document.documentElement;
 
 function HeaderMenu(props) {
-  const [fullScreen, setFullScreen] = useState(false);
   const [status, setStatus] = useState(dummy.user.status);
   const [anchorEl, setAnchorEl] = useState(null);
   const [fixed, setFixed] = useState(false);
@@ -49,40 +46,6 @@ function HeaderMenu(props) {
     };
   }, []);
 
-  const openFullScreen = () => {
-    setFullScreen(true);
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.mozRequestFullScreen) { /* Firefox */
-      elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-      elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { /* IE/Edge */
-      elem.msRequestFullscreen();
-    }
-  };
-
-  const closeFullScreen = () => {
-    setFullScreen(false);
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    }
-  };
-
-  const turnMode = mode => {
-    if (mode === 'light') {
-      props.changeMode('dark');
-    } else {
-      props.changeMode('light');
-    }
-  };
-
   const handleOpen = event => {
     setAnchorEl(event.currentTarget);
   };
@@ -101,8 +64,6 @@ function HeaderMenu(props) {
     type,
     dataMenu,
     history,
-    openGuide,
-    mode,
     toggleDrawerOpen,
     openMobileNav,
     loadTransition,
@@ -130,33 +91,6 @@ function HeaderMenu(props) {
           </IconButton>
         </Hidden>
         <Hidden smDown>
-          <div className={classes.headerProperties}>
-            <div className={classNames(classes.headerAction, classes.invert)}>
-              {fullScreen ? (
-                <Tooltip title="Exit Full Screen" placement="bottom">
-                  <IconButton className={classes.button} onClick={closeFullScreen}>
-                    <i className="ion-ios-qr-scanner-outline" />
-                  </IconButton>
-                </Tooltip>
-              ) : (
-                <Tooltip title="Full Screen" placement="bottom">
-                  <IconButton className={classes.button} onClick={openFullScreen}>
-                    <i className="ion-ios-qr-scanner-outline" />
-                  </IconButton>
-                </Tooltip>
-              )}
-              <Tooltip title="Turn Dark/Light" placement="bottom">
-                <IconButton className={classes.button} onClick={() => turnMode(mode)}>
-                  <i className="ion-ios-bulb-outline" />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Show Guide" placement="bottom">
-                <IconButton className={classes.button} onClick={openGuide}>
-                  <i className="ion-ios-help-circle-outline" />
-                </IconButton>
-              </Tooltip>
-            </div>
-          </div>
           <NavLink to={logoLink} className={classes.brand}>
             <img src={logo} alt={brand.name} />
             {brand.name}
@@ -212,9 +146,6 @@ HeaderMenu.propTypes = {
   type: PropTypes.string.isRequired,
   dataMenu: PropTypes.array.isRequired,
   openMobileNav: PropTypes.bool.isRequired,
-  mode: PropTypes.string.isRequired,
-  changeMode: PropTypes.func.isRequired,
-  openGuide: PropTypes.func.isRequired,
   toggleDrawerOpen: PropTypes.func.isRequired,
   loadTransition: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
