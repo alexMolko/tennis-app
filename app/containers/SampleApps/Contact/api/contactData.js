@@ -78,6 +78,32 @@ const contactData = [
     website: '',
     favorited: true
   },
+  {
+    id: '7',
+    avatar: avatarApi[2],
+    name: 'Jane Doe',
+    title: 'Executive',
+    phone: '+45353695',
+    secondaryPhone: '+678910111213',
+    personalEmail: 'janedoe@mail.com',
+    companyEmail: 'janedoe@company.com',
+    address: 'Dolor Street no.76 Block B/8B, Tokyo',
+    website: 'http://janedoe.com',
+    favorited: false
+  },
+  {
+    id: '8',
+    avatar: avatarApi[9],
+    name: 'James Doe',
+    title: 'Administrator',
+    phone: '+6281234567890',
+    secondaryPhone: '+6280987654321',
+    personalEmail: 'johndoe@mail.com',
+    companyEmail: 'johndoe@company.com',
+    address: 'Ipsum Street no.77 Block A/5A, New York',
+    website: 'http://doeclans.net',
+    favorited: false
+  },
 ];
 
 export default contactData;

@@ -3,25 +3,20 @@ import PropTypes from 'prop-types';
 import brand from 'dan-api/dummy/brand';
 import { Helmet } from 'react-helmet';
 import { withStyles } from '@material-ui/core/styles';
-import Hidden from '@material-ui/core/Hidden';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import {
   SliderWidget,
-  CounterIconsWidget,
-  PerformanceChartWidget,
-  DateWidget,
-  TaskWidget,
-  WeatherWidget,
+  PapperBlock,
   ContactWidget,
-  TimelineWidget,
-  FilesWidget,
+  NewsWidget,
+  CarouselWidget
 } from 'dan-components';
 import styles from './dashboard-jss';
 
 
 function PersonalDashboard(props) {
-  const title = brand.name + ' - Personal Dashboard';
+  const title = brand.name + ' - Home';
   const description = brand.desc;
   const { classes } = props;
   return (
@@ -36,20 +31,49 @@ function PersonalDashboard(props) {
       </Helmet>
       {/* 1st Section */}
       <Grid container spacing={3} className={classes.root}>
+        {/*
         <Grid item md={6} xs={12}>
           <CounterIconsWidget />
         </Grid>
-        <Grid item md={6} sm={12} xs={12}>
+        */}
+        <Grid item md={12} sm={12} xs={12}>
           <div className={classes.sliderWrap}>
             <SliderWidget />
           </div>
         </Grid>
       </Grid>
+      <Grid container spacing={3} className={classes.root}>
+        <Grid item md={12} sm={12} xs={12}>
+          <PapperBlock title="Top 8 Ranking" icon="ion-ios-tennisball">
+            <div>
+              <CarouselWidget />
+            </div>
+          </PapperBlock>
+        </Grid>
+      </Grid>
       <Divider className={classes.divider} />
       {/* 2nd Section */}
       <Grid container spacing={2} className={classes.root}>
+        {/*
         <Grid item xs={12}>
           <PerformanceChartWidget />
+        </Grid>
+        */}
+        <Grid item md={6} xs={12}>
+          {/* Partido de la semana  */}
+          <PapperBlock title="Partido de la semana" icon="ion-ios-tennisball" desc="Gran enfrentamiento">
+            <div>
+              <NewsWidget />
+            </div>
+          </PapperBlock>
+        </Grid>
+        <Grid item md={6} xs={12}>
+          {/* Resultados o calendario de partidos  */}
+          <PapperBlock title="Head to Head" icon="ion-ios-tennisball">
+            <div>
+              <NewsWidget />
+            </div>
+          </PapperBlock>
         </Grid>
       </Grid>
       {/* 3rd Section */}
@@ -57,22 +81,13 @@ function PersonalDashboard(props) {
         <Grid item md={6} xs={12}>
           <Divider className={classes.divider} />
           <ContactWidget />
-          <Divider className={classes.divider} />
-          <TaskWidget />
         </Grid>
         <Grid item md={6} xs={12}>
-          <Hidden mdDown>
-            <Divider className={classes.divider} />
-          </Hidden>
-          <WeatherWidget />
           <Divider className={classes.divider} />
-          <DateWidget />
-          <Divider className={classes.divider} />
-          <TimelineWidget />
+          <ContactWidget />
         </Grid>
       </Grid>
       <Divider className={classes.divider} />
-      <FilesWidget />
     </div>
   );
 }

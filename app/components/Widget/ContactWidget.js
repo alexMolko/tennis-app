@@ -28,6 +28,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
+import Divider from '@material-ui/core/Divider';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -52,44 +53,48 @@ TabContainer.propTypes = {
 
 /* Contact List */
 function ContactList(props) {
+  const { classes } = props;
   const getItem = dataArray => dataArray.map(data => (
-    <ListItem
-      button
-      key={data.id}
-    >
-      <Avatar alt={data.name} src={data.avatar} className={props.classes.avatar} />
-      <ListItemText primary={data.name} secondary={data.title} />
-      <Hidden xsDown>
-        <ListItemSecondaryAction>
-          <Tooltip title="Chat">
-            <IconButton className={props.classes.blueText} aria-label="Chat">
-              <Chat />
+    <div>
+      <ListItem
+        button
+        key={data.id}
+      >
+        <Avatar alt={data.name} src={data.avatar} className={props.classes.avatar} />
+        <ListItemText primary={data.name} secondary={data.title} />
+        <Hidden xsDown>
+          <ListItemSecondaryAction>
+            <Tooltip title="Chat">
+              <IconButton className={props.classes.blueText} aria-label="Chat">
+                <Chat />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Email">
+              <IconButton className={props.classes.pinkText} aria-label="Email">
+                <Mail />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Call">
+              <IconButton className={props.classes.tealText} aria-label="Telp">
+                <PhoneIcon />
+              </IconButton>
+            </Tooltip>
+          </ListItemSecondaryAction>
+        </Hidden>
+        <Hidden smUp>
+          <ListItemSecondaryAction>
+            <IconButton
+              aria-label="More"
+              aria-haspopup="true"
+              onClick={props.openMenu}
+            >
+              <MoreVertIcon />
             </IconButton>
-          </Tooltip>
-          <Tooltip title="Email">
-            <IconButton className={props.classes.pinkText} aria-label="Email">
-              <Mail />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Call">
-            <IconButton className={props.classes.tealText} aria-label="Telp">
-              <PhoneIcon />
-            </IconButton>
-          </Tooltip>
-        </ListItemSecondaryAction>
-      </Hidden>
-      <Hidden smUp>
-        <ListItemSecondaryAction>
-          <IconButton
-            aria-label="More"
-            aria-haspopup="true"
-            onClick={props.openMenu}
-          >
-            <MoreVertIcon />
-          </IconButton>
-        </ListItemSecondaryAction>
-      </Hidden>
-    </ListItem>
+          </ListItemSecondaryAction>
+        </Hidden>
+      </ListItem>
+      <Divider className={classes.divider} />
+    </div>
   ));
   return (
     <List>
