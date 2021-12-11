@@ -4,18 +4,13 @@ import classNames from 'classnames';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import { GuideSlider } from 'dan-components';
 import { toggleAction, openAction, playTransitionAction } from 'dan-redux/actions/uiActions';
-import LeftSidebarLayout from './layouts/LeftSidebarLayout';
-import RightSidebarLayout from './layouts/RightSidebarLayout';
-import LeftSidebarBigLayout from './layouts/LeftSidebarBigLayout';
-import DropMenuLayout from './layouts/DropMenuLayout';
 import MegaMenuLayout from './layouts/MegaMenuLayout';
 import styles from './appStyles-jss';
 
 function Dashboard(props) {
   // Initial header style
-  const [openGuide, setOpenGuide] = useState(false);
+
   const [appHeight, setAppHeight] = useState(0);
 
   useEffect(() => {
@@ -44,15 +39,6 @@ function Dashboard(props) {
       }
     };
   }, []);
-
-  const handleOpenGuide = () => {
-    setOpenGuide(true);
-  };
-
-  const handleCloseGuide = () => {
-    setOpenGuide(false);
-  };
-
   const {
     classes,
     children,
@@ -82,91 +68,6 @@ function Dashboard(props) {
         )
       }
     >
-      <GuideSlider openGuide={openGuide} closeGuide={handleCloseGuide} />
-      { /* Left Sidebar Layout */
-        layout === 'left-sidebar' && (
-          <LeftSidebarLayout
-            history={history}
-            toggleDrawer={toggleDrawer}
-            loadTransition={loadTransition}
-            changeMode={changeMode}
-            sidebarOpen={sidebarOpen}
-            pageLoaded={pageLoaded}
-            mode={mode}
-            gradient={gradient}
-            deco={deco}
-            bgPosition={bgPosition}
-            place={place}
-            titleException={titleException}
-            handleOpenGuide={handleOpenGuide}
-          >
-            { children }
-          </LeftSidebarLayout>
-        )
-      }
-      { /* Left Big-Sidebar Layout */
-        layout === 'big-sidebar' && (
-          <LeftSidebarBigLayout
-            history={history}
-            toggleDrawer={toggleDrawer}
-            loadTransition={loadTransition}
-            changeMode={changeMode}
-            sidebarOpen={sidebarOpen}
-            pageLoaded={pageLoaded}
-            gradient={gradient}
-            deco={deco}
-            bgPosition={bgPosition}
-            mode={mode}
-            place={place}
-            titleException={titleException}
-            handleOpenGuide={handleOpenGuide}
-          >
-            { children }
-          </LeftSidebarBigLayout>
-        )
-      }
-      { /* Right Sidebar Layout */
-        layout === 'right-sidebar' && (
-          <RightSidebarLayout
-            history={history}
-            toggleDrawer={toggleDrawer}
-            loadTransition={loadTransition}
-            changeMode={changeMode}
-            sidebarOpen={sidebarOpen}
-            pageLoaded={pageLoaded}
-            mode={mode}
-            gradient={gradient}
-            deco={deco}
-            bgPosition={bgPosition}
-            place={place}
-            titleException={titleException}
-            handleOpenGuide={handleOpenGuide}
-          >
-            { children }
-          </RightSidebarLayout>
-        )
-      }
-      { /* Top Bar with Dropdown Menu */
-        layout === 'top-navigation' && (
-          <DropMenuLayout
-            history={history}
-            toggleDrawer={toggleDrawer}
-            loadTransition={loadTransition}
-            changeMode={changeMode}
-            sidebarOpen={sidebarOpen}
-            pageLoaded={pageLoaded}
-            mode={mode}
-            gradient={gradient}
-            deco={deco}
-            bgPosition={bgPosition}
-            place={place}
-            titleException={titleException}
-            handleOpenGuide={handleOpenGuide}
-          >
-            { children }
-          </DropMenuLayout>
-        )
-      }
       { /* Top Bar with Mega Menu */
         layout === 'mega-menu' && (
           <MegaMenuLayout
@@ -182,7 +83,6 @@ function Dashboard(props) {
             bgPosition={bgPosition}
             place={place}
             titleException={titleException}
-            handleOpenGuide={handleOpenGuide}
           >
             { children }
           </MegaMenuLayout>

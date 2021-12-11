@@ -20,8 +20,7 @@ const styles = ({
   },
   quoteLeft: {
     extend: 'quoteWrap',
-    textAlign: 'left',
-    borderLeft: '5px solid' + blueGrey[50],
+    textAlign: 'center',
     paddingLeft: 25,
     '&:before': {
       content: 'open-quote',
@@ -47,7 +46,6 @@ function Quote(props) {
   const {
     align,
     content,
-    footnote,
     classes
   } = props;
   return (
@@ -62,9 +60,6 @@ function Quote(props) {
       <Typography variant="subtitle1" className={classes.quoteBody} gutterBottom>
         {content}
       </Typography>
-      <Typography variant="caption">
-        {footnote}
-      </Typography>
     </div>
   );
 }
@@ -72,7 +67,6 @@ function Quote(props) {
 Quote.propTypes = {
   align: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  footnote: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
