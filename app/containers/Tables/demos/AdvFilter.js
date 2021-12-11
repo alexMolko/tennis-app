@@ -32,19 +32,19 @@ const styles = theme => ({
 function AdvFilter(props) {
   const columns = [
     {
-      name: 'Name',
+      name: 'Ranking',
       options: {
         filter: true
       }
     },
     {
-      name: 'Title',
+      name: 'Jugador',
       options: {
         filter: true,
       }
     },
     {
-      name: 'KPI',
+      name: 'Edad',
       options: {
         filter: false,
         customBodyRender: (value) => (
@@ -58,17 +58,17 @@ function AdvFilter(props) {
         filter: true,
         customBodyRender: (value) => {
           if (value === 'active') {
-            return (<Chip label="Active" color="secondary" />);
+            return (<Chip label="Activo" color="secondary" />);
           }
           if (value === 'non-active') {
-            return (<Chip label="Non Active" color="primary" />);
+            return (<Chip label="Inactivo" color="primary" />);
           }
-          return (<Chip label="Unknown" />);
+          return (<Chip label="Desconocido" />);
         }
       }
     },
     {
-      name: 'Salary',
+      name: 'Torneos jugados',
       options: {
         filter: true,
         customBodyRender: (value) => {
@@ -123,7 +123,8 @@ function AdvFilter(props) {
     responsive: 'vertical',
     print: true,
     rowsPerPage: 10,
-    page: 0
+    page: 0,
+    selectableRows: 'none'
   };
 
   const { classes } = props;
@@ -131,7 +132,7 @@ function AdvFilter(props) {
   return (
     <div className={classes.table}>
       <MUIDataTable
-        title="Employee list"
+        title="Ranking de jugadores"
         data={data}
         columns={columns}
         options={options}

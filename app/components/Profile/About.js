@@ -22,12 +22,11 @@ import Adb from '@material-ui/icons/Adb';
 import AllInclusive from '@material-ui/icons/AllInclusive';
 import AssistantPhoto from '@material-ui/icons/AssistantPhoto';
 import Type from 'dan-styles/Typography.scss';
-import Timeline from '../SocialMedia/Timeline';
 import PapperBlock from '../PapperBlock/PapperBlock';
 import styles from './profile-jss';
 
 function About(props) {
-  const { classes, data } = props;
+  const { classes } = props;
   return (
     <Grid
       container
@@ -173,8 +172,7 @@ function About(props) {
 }
 
 About.propTypes = {
-  classes: PropTypes.object.isRequired,
-  data: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(About);

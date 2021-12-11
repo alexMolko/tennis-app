@@ -21,6 +21,6 @@ module.exports = [
     key: 'tables',
     name: 'Rankings',
     icon: 'ion-ios-grid-outline',
-    linkParent: '/app'
+    linkParent: '/app/tables/data-table'
   }
 ];
