@@ -67,7 +67,6 @@ function UserProfile(props) {
         coverImg={bgCover}
         avatar={dummy.user.avatar}
         name={dummy.user.name}
-        desc="Consectetur adipiscing elit."
       />
       <AppBar position="static" className={classes.profileTab}>
         <Hidden mdUp>
@@ -94,10 +93,10 @@ function UserProfile(props) {
             textColor="primary"
             centered
           >
-            <Tab icon={<AccountCircle />} label="ABOUT" />
-            <Tab icon={<SupervisorAccount />} label="20 CONNECTIONS" />
-            <Tab icon={<Favorite />} label="18 FAVORITES" />
-            <Tab icon={<PhotoLibrary />} label="4 ALBUMS" />
+            <Tab icon={<AccountCircle />} label="GENERAL" />
+            <Tab icon={<SupervisorAccount />} label="COMENTARIOS" />
+            <Tab icon={<Favorite />} label="DESTACAR" />
+            <Tab icon={<PhotoLibrary />} label="FOTOS" />
           </Tabs>
         </Hidden>
       </AppBar>

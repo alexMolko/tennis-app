@@ -3,7 +3,7 @@ import avatarApi from 'dan-api/images/avatars';
 const timelineData = [
   {
     id: '1',
-    name: 'John Doe',
+    name: 'Carlos Maya',
     date: 'September, 12 2018',
     time: '08:01',
     icon: 'add_circle',

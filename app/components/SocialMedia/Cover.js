@@ -4,13 +4,14 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import Info from '@material-ui/icons/Info';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { withStyles } from '@material-ui/core/styles';
+import Type from 'dan-styles/Typography.scss';
 import styles from './jss/cover-jss';
+
 
 const optionsOpt = [
   'Edit Profile',
@@ -28,7 +29,6 @@ function Cover(props) {
     classes,
     avatar,
     name,
-    desc,
     coverImg,
   } = props;
 
@@ -80,12 +80,19 @@ function Cover(props) {
           {name}
           <VerifiedUser className={classes.verified} />
         </Typography>
-        <Typography className={classes.subheading} gutterBottom>
-          {desc}
-        </Typography>
-        <Button className={classes.button} size="large" variant="contained" color="secondary">
-          Add to Connection
-        </Button>
+        <div className={classes.bg}>
+          <Typography variant="h6" gutterBottom>
+            <span className={Type.medium}>
+              Ranking
+            </span>
+            &nbsp;
+          </Typography>
+          <Typography variant="h3" gutterBottom>
+            <span className={Type.bold}>
+             1
+            </span>
+          </Typography>
+        </div>
       </div>
     </div>
   );
@@ -95,7 +102,6 @@ Cover.propTypes = {
   classes: PropTypes.object.isRequired,
   avatar: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired,
   coverImg: PropTypes.string.isRequired,
 };
 
