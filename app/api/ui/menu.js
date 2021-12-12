@@ -15,7 +15,7 @@ module.exports = [
     key: 'pages',
     name: 'Jugadores',
     icon: 'ion-ios-paper-outline',
-    linkParent: '/app'
+    linkParent: '/app/pages/players'
   },
   {
     key: 'tables',

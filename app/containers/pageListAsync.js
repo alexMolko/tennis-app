@@ -321,6 +321,10 @@ export const Profile = loadable(() =>
   import ('./Pages/UserProfile'), {
     fallback: <Loading />,
   });
+export const Players = loadable(() =>
+import ('./Pages/Players'), {
+  fallback: <Loading />,
+});
 export const Timeline = loadable(() =>
   import ('./SampleApps/Timeline'), {
     fallback: <Loading />,
