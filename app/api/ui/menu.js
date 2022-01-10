@@ -9,7 +9,7 @@ module.exports = [
     key: 'apps',
     name: 'Torneos',
     icon: 'ion-ios-appstore-outline',
-    linkParent: '/app'
+    linkParent: '/app/pages/tournaments'
   },
   {
     key: 'pages',
