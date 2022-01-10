@@ -1,23 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import brand from 'dan-api/dummy/brand';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Hidden from '@material-ui/core/Hidden';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
-import Favorite from '@material-ui/icons/Favorite';
-import PhotoLibrary from '@material-ui/icons/PhotoLibrary';
 import { withStyles } from '@material-ui/core/styles';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
-  About,
   Connection,
-  Favorites,
-  Albums
 } from 'dan-components';
 import styles from 'dan-components/SocialMedia/jss/cover-jss';
 import data from '../../SampleApps/Timeline/api/timelineData';
@@ -39,16 +28,11 @@ TabContainer.propTypes = {
 function Players(props) {
   const title = brand.name + ' - Jugadores';
   const description = brand.desc;
-  const { dataProps, classes, fetchData } = props;
-  const [value, setValue] = useState(0);
+  const { fetchData } = props;
 
   useEffect(() => {
     fetchData(data);
   }, [fetchData, data]);
-
-  const handleChange = (event, val) => {
-    setValue(val);
-  };
 
   return (
     <div>
@@ -66,8 +50,6 @@ function Players(props) {
 }
 
 Players.propTypes = {
-  classes: PropTypes.object.isRequired,
-  dataProps: PropTypes.object.isRequired,
   fetchData: PropTypes.func.isRequired,
 };
 
