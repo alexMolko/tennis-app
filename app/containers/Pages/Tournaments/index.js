@@ -10,12 +10,17 @@ import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
 import img from 'dan-api/images/photos';
 import classNames from 'classnames';
+import Slider from 'react-slick';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import imgData from 'dan-api/images/imgData';
 import styles from './blogStyle-jss';
+import 'dan-styles/vendors/slick-carousel/slick-carousel.css';
+import 'dan-styles/vendors/slick-carousel/slick.css';
+import 'dan-styles/vendors/slick-carousel/slick-theme.css';
 
 let id = 0;
 function createData(name, calories, fat, carbs, protein) {
@@ -40,6 +45,14 @@ const data = [
 
 function Tournaments(props) {
   const { classes } = props;
+  const settings = {
+    dots: true,
+    infinite: true,
+    centerMode: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1
+  };
   return (
     <Fragment>
       <div className={classes.root}>
@@ -106,6 +119,15 @@ function Tournaments(props) {
             </div>
           </Grid>
         </Grid>
+        <div className="container">
+          <Slider {...settings}>
+            {imgData.map((item, index) => (
+              <div key={index.toString()} className={classes.item}>
+                <img src={item.img} alt={item.title} />
+              </div>
+            ))}
+          </Slider>
+        </div>
       </div>
     </Fragment>
   );
