@@ -58,8 +58,6 @@ const content = [
 
 function SliderWidget(props) {
   const { classes } = props;
-  const currentURL = window.location.href;
-  console.log(currentURL);
   return (
     <div>
       <Slider className="slider-wrapper short">

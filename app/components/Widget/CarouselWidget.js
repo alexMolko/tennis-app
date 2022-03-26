@@ -7,8 +7,9 @@ import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import ArrowForward from '@material-ui/icons/ArrowForward';
 import ArrowBack from '@material-ui/icons/ArrowBack';
-import Icon from '@material-ui/core/Icon';
 import carouselData from 'dan-api/images/carouselData';
+import Grid from '@material-ui/core/Grid';
+import { ShowcaseCard } from 'dan-components';
 import 'dan-styles/vendors/slick-carousel/slick-carousel.css';
 import 'dan-styles/vendors/slick-carousel/slick.css';
 import 'dan-styles/vendors/slick-carousel/slick-theme.css';
@@ -91,25 +92,27 @@ function CarouselWidget(props) {
     prevArrow: <SamplePrevArrow />
   };
   return (
-    <div className="container custom-arrow">
+    <Grid className="container custom-arrow">
       <Slider {...settings}>
         {carouselData.map((item, index) => (
-          <div key={index.toString()}>
-            <div style={{ backgroundColor: item.background }} className={classes.carouselItem}>
-              <Icon className={classes.iconBg}>{item.icon}</Icon>
-              <Typography className={classes.carouselTitle} variant="subtitle1">
-                <Icon>{item.icon}</Icon>
-                {item.title}
-              </Typography>
-              <Typography className={classes.carouselDesc}>{item.desc}</Typography>
-              <Button variant="outlined" size="small" className={classes.buttonReadMore}>
-                Read More
-              </Button>
-            </div>
-          </div>
+          <Grid spacing={3} className={classes.carouselItem} key={index.toString()}>
+            <Grid item md={12} xs={12}>
+              <ShowcaseCard
+                landscape
+                title={item.title}
+                rankingNumber={item.ranking}
+                pointsNumber={item.points}
+                action="Ver perfil"
+                image={item.img}
+                href={item.href}
+                ranking="Ranking : "
+                points="puntos"
+              />
+            </Grid>
+          </Grid>
         ))}
       </Slider>
-    </div>
+    </Grid>
   );
 }
 

@@ -15,15 +15,19 @@ function ShowcaseCard(props) {
   const {
     classes,
     title,
-    desc,
+    pointsNumber,
     action,
     image,
     landscape,
-    date,
+    rankingNumber,
     noMargin,
     extraSize,
-    href
+    href,
+    ranking,
+    points,
   } = props;
+  const rankingPhrase = `${ranking} ${rankingNumber}`;
+  const pointsPhrase = `${pointsNumber} ${points}`;
   return (
     <Card className={classNames(noMargin ? classes.gutterBottom : classes.cardMedia, landscape && classes.landscapeCard)}>
       <CardMedia
@@ -37,9 +41,9 @@ function ShowcaseCard(props) {
         title={title}
       />
       <CardContent>
-        <Typography noWrap variant="h5">{title}</Typography>
-        {date && (<Typography variant="caption" gutterBottom>{date}</Typography>)}
-        <Typography variant="subtitle1">{desc}</Typography>
+        <Typography noWrap variant="h4">{title}</Typography>
+        {rankingNumber && (<Typography variant="h5" gutterBottom>{rankingPhrase}</Typography>)}
+        <Typography variant="h6">{pointsPhrase}</Typography>
         {landscape && (
           <div className={classes.btnArea}>
             <Button size="large" component={Link} to={href} variant="outlined" color="primary">{action}</Button>
@@ -58,22 +62,26 @@ function ShowcaseCard(props) {
 ShowcaseCard.propTypes = {
   classes: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  desc: PropTypes.node.isRequired,
+  pointsNumber: PropTypes.node.isRequired,
   action: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   landscape: PropTypes.bool,
   noMargin: PropTypes.bool,
   extraSize: PropTypes.bool,
-  date: PropTypes.string,
+  rankingNumber: PropTypes.string,
   href: PropTypes.string,
+  points: PropTypes.string,
+  ranking: PropTypes.string,
 };
 
 ShowcaseCard.defaultProps = {
   landscape: false,
-  date: undefined,
+  rankingNumber: '',
   noMargin: false,
   extraSize: false,
-  href: '#'
+  href: '#',
+  points: '',
+  ranking: 'undefined',
 };
 
 export default withStyles(styles)(ShowcaseCard);

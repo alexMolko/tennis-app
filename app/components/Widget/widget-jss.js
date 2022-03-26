@@ -330,8 +330,8 @@ const styles = theme => ({
     boxShadow: theme.shadows[3],
     borderRadius: theme.rounded.medium,
     overflow: 'hidden',
-    height: 380,
-    padding: '60px 20px',
+    height: 400,
+    padding: '10px 5px',
     position: 'relative'
   },
   iconBg: {
