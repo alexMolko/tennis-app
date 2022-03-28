@@ -31,40 +31,28 @@ const styles = theme => ({
 
 const content = [
   {
-    title: 'Vulputate Mollis Ultricies',
+    title: 'Torneo de Verano "B" 2022',
     description:
     'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.',
-    button: 'Watch Video',
-    image: imgApi[8],
-    label: 'Uploaded to',
-    tag: 'Just Uploaded',
-    to: 'Lorem Video',
+    button: 'Detalles',
+    image: '/images/banners/banner_home.jpg',
+    label: 'Clase B',
+    tag: 'Nuevo',
+    to: '',
     userProfile: imgApi[54],
-    type: 'video',
+    type: 'article',
   },
   {
-    title: 'Tortor Dapibus Fermentum',
+    title: 'Torneo de Verano "C" 2022',
     description:
     'Cras mattis consectetur purus sit amet fermentum.',
-    button: 'See Post',
-    image: imgApi[15],
-    label: 'Posted to',
-    tag: 'Newest Post',
-    to: 'Ipsum Media',
+    button: 'Detalles',
+    image: '/images/banners/banner_home2.jpg',
+    label: 'Clase C ',
+    tag: 'Nuevo',
+    to: '',
     userProfile: imgApi[53],
-    type: 'article'
-  },
-  {
-    title: 'Phasellus volutpat',
-    description:
-    'Lorem ipsum dolor sit amet',
-    button: 'Read Article',
-    image: imgApi[29],
-    label: 'Posted to',
-    tag: 'Latest Article',
-    to: 'Dolor Sit News',
-    userProfile: imgApi[58],
-    type: 'article'
+    type: 'video'
   }
 ];
 

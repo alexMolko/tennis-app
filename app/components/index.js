@@ -144,3 +144,5 @@ export AddBoard from './TaskBoard/AddBoard';
 export ErrorWrap from './Error/ErrorWrap';
 // Theme an Layout Settings
 export TemplateSettings from './TemplateSettings';
+// Head to Head
+export HeadToHead from './HeadToHead/HeadToHead';

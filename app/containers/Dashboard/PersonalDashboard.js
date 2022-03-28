@@ -59,7 +59,7 @@ function PersonalDashboard(props) {
           <PerformanceChartWidget />
         </Grid>
         */}
-        <Grid item md={6} xs={12}>
+        <Grid item md={12} xs={12}>
           {/* Partido de la semana  */}
           <PapperBlock title="Partido de la semana" icon="ion-ios-tennisball" desc="Gran enfrentamiento">
             <div>
@@ -67,22 +67,18 @@ function PersonalDashboard(props) {
             </div>
           </PapperBlock>
         </Grid>
-        <Grid item md={6} xs={12}>
-          {/* Resultados o calendario de partidos  */}
-          <PapperBlock title="Head to Head" icon="ion-ios-tennisball">
-            <div>
-              <NewsWidget />
-            </div>
-          </PapperBlock>
-        </Grid>
       </Grid>
-      {/* 3rd Section */}
+      {/* Partidos */}
       <Grid container spacing={3} className={classes.root}>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} xs={12}>
           <Divider className={classes.divider} />
           <ContactWidget />
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} xs={12}>
+          <Divider className={classes.divider} />
+          <ContactWidget />
+        </Grid>
+        <Grid item md={4} xs={12}>
           <Divider className={classes.divider} />
           <ContactWidget />
         </Grid>
