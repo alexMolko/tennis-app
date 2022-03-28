@@ -28,7 +28,6 @@ const slideData = [
 
 function NewsWidget(props) {
   const { classes } = props;
-  console.log(slideData[0].Jugador);
   return (
     <div>
       <Paper>

@@ -8,31 +8,19 @@ import Tab from '@material-ui/core/Tab';
 import Hidden from '@material-ui/core/Hidden';
 import Badge from '@material-ui/core/Badge';
 import Paper from '@material-ui/core/Paper';
-import PhoneIcon from '@material-ui/icons/Phone';
 import Chat from '@material-ui/icons/Chat';
-import Mail from '@material-ui/icons/Mail';
-import NotificationsActive from '@material-ui/icons/NotificationsActive';
-import Info from '@material-ui/icons/Info';
-import Warning from '@material-ui/icons/Warning';
-import Check from '@material-ui/icons/CheckCircle';
-import Error from '@material-ui/icons/RemoveCircle';
+import DoneIcon from '@material-ui/icons/Done';
 import AccountBox from '@material-ui/icons/AccountBox';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import PlaylistAddCheck from '@material-ui/icons/PlaylistAddCheck';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import Tooltip from '@material-ui/core/Tooltip';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import messageStyles from 'dan-styles/Messages.scss';
+import Grid from '@material-ui/core/Grid';
 import dataContact from '../../containers/SampleApps/Contact/api/contactData';
 import styles from './widget-jss';
 
@@ -53,59 +41,135 @@ TabContainer.propTypes = {
 
 /* Contact List */
 function ContactList(props) {
-  const { classes } = props;
-  const getItem = dataArray => dataArray.map(data => (
-    <div>
-      <ListItem
-        button
-        key={data.id}
-      >
-        <Avatar alt={data.name} src={data.avatar} className={props.classes.avatar} />
-        <ListItemText primary={data.name} secondary={data.title} />
-        <Hidden xsDown>
-          <ListItemSecondaryAction>
-            <Tooltip title="Chat">
-              <IconButton className={props.classes.blueText} aria-label="Chat">
-                <Chat />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Email">
-              <IconButton className={props.classes.pinkText} aria-label="Email">
-                <Mail />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Call">
-              <IconButton className={props.classes.tealText} aria-label="Telp">
-                <PhoneIcon />
-              </IconButton>
-            </Tooltip>
-          </ListItemSecondaryAction>
-        </Hidden>
-        <Hidden smUp>
-          <ListItemSecondaryAction>
-            <IconButton
-              aria-label="More"
-              aria-haspopup="true"
-              onClick={props.openMenu}
-            >
-              <MoreVertIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </Hidden>
-      </ListItem>
-      <Divider className={classes.divider} />
-    </div>
-  ));
+  const { classes, data } = props;
+  let spaceResult = '';
+  let spaceResult2 = '';
+  if (data.Ganador !== data.name) {
+    spaceResult = '2px';
+  }
+  if (data.Ganador !== data.name2) {
+    spaceResult2 = '2px';
+  }
   return (
     <List>
-      {getItem(dataContact)}
+      <div>
+        <ListItem
+          button
+          key={data.id}
+        >
+          <Avatar alt={data.name} src={data.avatar} className={classes.avatar} />
+          <ListItemText primary={data.name} secondary="Ranking 1" />
+          <Hidden xsDown>
+            <ListItemSecondaryAction>
+              <Grid container>
+                <Grid item md={6} xs={6}>
+                  { data.Ganador === data.name ? (
+                    <Tooltip title="Ganador">
+                      <IconButton className={classes.blueText} aria-label="Ganador">
+                        {data.Ganador === data.name ? <DoneIcon style={{ fill: '#00bfa5' }} /> : '' }
+                      </IconButton>
+                    </Tooltip>
+                  )
+                    : ''}
+
+                </Grid>
+                <Grid item md={6} xs={6} style={{ margin: spaceResult }}>
+                  <Tooltip title="Resultado">
+                    <IconButton className={classes.blueText} aria-label="Chat">
+                      <span>{data.MarcadorJugador1}</span>
+                    </IconButton>
+                  </Tooltip>
+                </Grid>
+              </Grid>
+            </ListItemSecondaryAction>
+          </Hidden>
+          <Hidden smUp>
+            <ListItemSecondaryAction>
+              <Grid container>
+                <Grid item md={6} xs={6}>
+                  { data.Ganador === data.name ? (
+                    <Tooltip title="Ganador">
+                      <IconButton className={classes.blueText} aria-label="Ganador">
+                        {data.Ganador === data.name ? <DoneIcon style={{ fill: '#00bfa5' }} /> : '' }
+                      </IconButton>
+                    </Tooltip>
+                  )
+                    : ''}
+
+                </Grid>
+                <Grid item md={6} xs={6} style={{ margin: spaceResult }}>
+                  <Tooltip title="Resultado">
+                    <IconButton className={classes.blueText} aria-label="Chat">
+                      <span>{data.MarcadorJugador1}</span>
+                    </IconButton>
+                  </Tooltip>
+                </Grid>
+              </Grid>
+            </ListItemSecondaryAction>
+          </Hidden>
+        </ListItem>
+        <Divider className={classes.divider} style={{ margin: '0px' }} />
+        <ListItem
+          button
+          key={data.id}
+        >
+          <Avatar alt={data.name2} src={data.avatar2} className={classes.avatar} />
+          <ListItemText primary={data.name2} secondary="Ranking 1" />
+          <Hidden xsDown>
+            <ListItemSecondaryAction>
+              <Grid container>
+                <Grid item md={6} xs={6}>
+                  { data.Ganador === data.name2 ? (
+                    <Tooltip title="Ganador">
+                      <IconButton className={classes.blueText} aria-label="Ganador">
+                        {data.Ganador === data.name2 ? <DoneIcon style={{ fill: '#00bfa5' }} /> : '' }
+                      </IconButton>
+                    </Tooltip>
+                  )
+                    : ''}
+                </Grid>
+                <Grid item md={6} xs={6} style={{ margin: spaceResult2 }}>
+                  <Tooltip title="Resultado">
+                    <IconButton className={classes.blueText} aria-label="Chat">
+                      <span>{data.MarcadorJugador2}</span>
+                    </IconButton>
+                  </Tooltip>
+                </Grid>
+              </Grid>
+            </ListItemSecondaryAction>
+          </Hidden>
+          <Hidden smUp>
+            <ListItemSecondaryAction>
+              <Grid container>
+                <Grid item md={6} xs={6}>
+                  { data.Ganador === data.name2 ? (
+                    <Tooltip title="Ganador">
+                      <IconButton className={classes.blueText} aria-label="Ganador">
+                        {data.Ganador === data.name2 ? <DoneIcon style={{ fill: '#00bfa5' }} /> : '' }
+                      </IconButton>
+                    </Tooltip>
+                  )
+                    : ''}
+                </Grid>
+                <Grid item md={6} xs={6} style={{ margin: spaceResult2 }}>
+                  <Tooltip title="Resultado">
+                    <IconButton className={classes.blueText} aria-label="Chat">
+                      <span>{data.MarcadorJugador2}</span>
+                    </IconButton>
+                  </Tooltip>
+                </Grid>
+              </Grid>
+            </ListItemSecondaryAction>
+          </Hidden>
+        </ListItem>
+      </div>
     </List>
   );
 }
 
 ContactList.propTypes = {
   classes: PropTypes.object.isRequired,
-  openMenu: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 const ContactListStyled = withStyles(styles)(ContactList);
@@ -117,31 +181,10 @@ function MessagesList(props) {
   return (
     <List>
       <ListItem button component={NavLink} to="/app/pages/chat">
-        <Avatar alt={dataContact[2].name} src={dataContact[2].avatar} className={classes.avatar} />
-        <ListItemText primary={dataContact[2].name} className={classes.messages} secondary="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
+        <Avatar alt={dataContact[1].name} src={dataContact[1].avatar} className={classes.avatar} />
+        <ListItemText primary={dataContact[1].name} className={classes.messages} secondary="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
         <ListItemSecondaryAction>
           <Typography variant="caption">10:42 PM</Typography>
-        </ListItemSecondaryAction>
-      </ListItem>
-      <ListItem button component={NavLink} to="/app/pages/chat">
-        <Avatar alt={dataContact[5].name} src={dataContact[5].avatar} className={classes.avatar} />
-        <ListItemText primary={dataContact[5].name} className={classes.messages} secondary="Sed a ipsum euismod, eleifend turpis sed." />
-        <ListItemSecondaryAction>
-          <Typography variant="caption">11:17 AM</Typography>
-        </ListItemSecondaryAction>
-      </ListItem>
-      <ListItem button component={NavLink} to="/app/pages/chat">
-        <Avatar alt={dataContact[1].name} src={dataContact[1].avatar} className={classes.avatar} />
-        <ListItemText primary={dataContact[1].name} className={classes.messages} secondary="Praesent viverra est et risus fringilla bibendum." />
-        <ListItemSecondaryAction>
-          <Typography variant="caption">11 Oct</Typography>
-        </ListItemSecondaryAction>
-      </ListItem>
-      <ListItem button component={NavLink} to="/app/pages/chat">
-        <Avatar alt={dataContact[0].name} src={dataContact[0].avatar} className={classes.avatar} />
-        <ListItemText primary={dataContact[0].name} className={classes.messages} secondary="Praesent at ex non leo iaculis dignissim. Proin nec venenatis nulla, nec vulputate ipsum. Curabitur eu dignissim nibh, eget condimentum massa." />
-        <ListItemSecondaryAction>
-          <Typography variant="caption">12 Oct</Typography>
         </ListItemSecondaryAction>
       </ListItem>
     </List>
@@ -155,135 +198,9 @@ MessagesList.propTypes = {
 const MessagesListStyled = withStyles(styles)(MessagesList);
 /* END Conversation List */
 
-/* Email List */
-function NotifList(props) {
-  const { classes, openMenu } = props;
-  return (
-    <List>
-      <ListItem button className={messageStyles.messageInfo}>
-        <Avatar className={messageStyles.icon}>
-          <Info />
-        </Avatar>
-        <ListItemText primary="Lorem ipsum dolor" secondary="12 Oct 2018" />
-        <Hidden xsDown>
-          <ListItemSecondaryAction>
-            <Button variant="outlined" size="small" color="primary" className={classes.button}>
-              Fix it
-            </Button>
-            <Button variant="outlined" size="small" className={classes.button}>
-              Skip
-            </Button>
-          </ListItemSecondaryAction>
-        </Hidden>
-        <Hidden smUp>
-          <ListItemSecondaryAction>
-            <IconButton
-              aria-label="More"
-              aria-haspopup="true"
-              onClick={openMenu}
-            >
-              <MoreVertIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </Hidden>
-      </ListItem>
-      <ListItem button className={messageStyles.messageSuccess}>
-        <Avatar className={messageStyles.icon}>
-          <Check />
-        </Avatar>
-        <ListItemText primary="Lorem ipsum dolor" secondary="12 Oct 2018" />
-        <Hidden xsDown>
-          <ListItemSecondaryAction>
-            <Button variant="outlined" size="small" color="primary" className={classes.button}>
-              Fix it
-            </Button>
-            <Button variant="outlined" size="small" className={classes.button}>
-              Skip
-            </Button>
-          </ListItemSecondaryAction>
-        </Hidden>
-        <Hidden smUp>
-          <ListItemSecondaryAction>
-            <IconButton
-              aria-label="More"
-              aria-haspopup="true"
-              onClick={openMenu}
-            >
-              <MoreVertIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </Hidden>
-      </ListItem>
-      <ListItem button className={messageStyles.messageWarning}>
-        <Avatar className={messageStyles.icon}>
-          <Warning />
-        </Avatar>
-        <ListItemText primary="Lorem ipsum dolor" secondary="12 Oct 2018" />
-        <Hidden xsDown>
-          <ListItemSecondaryAction>
-            <Button variant="outlined" size="small" color="primary" className={classes.button}>
-              Fix it
-            </Button>
-            <Button variant="outlined" size="small" className={classes.button}>
-              Skip
-            </Button>
-          </ListItemSecondaryAction>
-        </Hidden>
-        <Hidden smUp>
-          <ListItemSecondaryAction>
-            <IconButton
-              aria-label="More"
-              aria-haspopup="true"
-              onClick={openMenu}
-            >
-              <MoreVertIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </Hidden>
-      </ListItem>
-      <ListItem button className={messageStyles.messageError}>
-        <Avatar className={messageStyles.icon}>
-          <Error />
-        </Avatar>
-        <ListItemText primary="Lorem ipsum dolor" secondary="12 Oct 2018" />
-        <Hidden xsDown>
-          <ListItemSecondaryAction>
-            <Button variant="outlined" size="small" color="primary" className={classes.button}>
-              Fix it
-            </Button>
-            <Button variant="outlined" size="small" className={classes.button}>
-              Skip
-            </Button>
-          </ListItemSecondaryAction>
-        </Hidden>
-        <Hidden smUp>
-          <ListItemSecondaryAction>
-            <IconButton
-              aria-label="More"
-              aria-haspopup="true"
-              onClick={openMenu}
-            >
-              <MoreVertIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </Hidden>
-      </ListItem>
-    </List>
-  );
-}
-
-NotifList.propTypes = {
-  classes: PropTypes.object.isRequired,
-  openMenu: PropTypes.func.isRequired,
-};
-
-const NotifListStyled = withStyles(styles)(NotifList);
-/* END Email List */
-
 function ContactWidget(props) {
   const [value, setValue] = useState(0);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [anchorElAction, setAnchorElAction] = useState(null);
+  const [setAnchorEl] = useState(null);
 
   const handleChange = (event, val) => {
     setValue(val);
@@ -292,65 +209,9 @@ function ContactWidget(props) {
   const handleOpen = event => {
     setAnchorEl(event.currentTarget);
   };
-
-  const handleOpenAction = event => {
-    setAnchorElAction(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-    setAnchorElAction(null);
-  };
-
   const { classes } = props;
-  const open = Boolean(anchorEl);
-  const openAct = Boolean(anchorElAction);
-  return (
-    <Fragment>
-      <Menu
-        id="long-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-      >
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Chat className={classes.blueText} />
-          </ListItemIcon>
-          <ListItemText variant="inset" primary="Chat" />
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Mail className={classes.pinkText} />
-          </ListItemIcon>
-          <ListItemText variant="inset" primary="Email" />
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PhoneIcon className={classes.tealText} />
-          </ListItemIcon>
-          <ListItemText variant="inset" primary="Call" />
-        </MenuItem>
-      </Menu>
-      <Menu
-        id="long-menu-act"
-        anchorEl={anchorElAction}
-        open={openAct}
-        onClose={handleClose}
-      >
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Check className={classes.tealText} />
-          </ListItemIcon>
-          <ListItemText variant="inset" primary="Fix it" />
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PlaylistAddCheck />
-          </ListItemIcon>
-          <ListItemText variant="inset" primary="Skip" />
-        </MenuItem>
-      </Menu>
+  const r = dataArray => dataArray.map(data => (
+    <div>
       <Paper className={classes.rootContact}>
         <AppBar position="static" color="default">
           <Hidden mdUp>
@@ -363,7 +224,6 @@ function ContactWidget(props) {
             >
               <Tab icon={<AccountBox />} />
               <Tab icon={<Chat />} />
-              <Tab icon={<NotificationsActive />} />
             </Tabs>
           </Hidden>
           <Hidden smDown>
@@ -374,30 +234,27 @@ function ContactWidget(props) {
               textColor="primary"
               variant="fullWidth"
             >
-              <Tab label="Contacts" icon={<AccountBox />} />
+              <Tab label="Partido" icon={<AccountBox />} />
               <Tab
                 label={(
-                  <Badge className={classes.tabNotif} color="secondary" badgeContent={4}>
-                    Messages
+                  <Badge className={classes.tabNotif} color="secondary">
+                    Información
                   </Badge>
                 )}
                 icon={<Chat />}
               />
-              <Tab
-                label={(
-                  <Badge className={classes.tabNotif} color="secondary" badgeContent={4}>
-                    Notifications
-                  </Badge>
-                )}
-                icon={<NotificationsActive />}
-              />
             </Tabs>
           </Hidden>
         </AppBar>
-        {value === 0 && <TabContainer><ContactListStyled openMenu={handleOpen} /></TabContainer>}
+        {value === 0 && <TabContainer><ContactListStyled data={data} openMenu={handleOpen} /></TabContainer>}
         {value === 1 && <TabContainer><MessagesListStyled /></TabContainer>}
-        {value === 2 && <TabContainer><NotifListStyled openMenu={handleOpenAction} /></TabContainer>}
       </Paper>
+      <br />
+    </div>
+  ));
+  return (
+    <Fragment>
+      {r(dataContact)}
     </Fragment>
   );
 }

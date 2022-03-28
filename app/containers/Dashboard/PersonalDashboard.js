@@ -68,13 +68,17 @@ function PersonalDashboard(props) {
           </PapperBlock>
         </Grid>
       </Grid>
-      {/* 3rd Section */}
+      {/* Partidos */}
       <Grid container spacing={3} className={classes.root}>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} xs={12}>
           <Divider className={classes.divider} />
           <ContactWidget />
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} xs={12}>
+          <Divider className={classes.divider} />
+          <ContactWidget />
+        </Grid>
+        <Grid item md={4} xs={12}>
           <Divider className={classes.divider} />
           <ContactWidget />
         </Grid>

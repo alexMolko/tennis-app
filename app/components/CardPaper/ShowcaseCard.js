@@ -41,9 +41,9 @@ function ShowcaseCard(props) {
         title={title}
       />
       <CardContent>
-        <Typography noWrap variant="h4">{title}</Typography>
-        {rankingNumber && (<Typography variant="h5" gutterBottom>{rankingPhrase}</Typography>)}
-        <Typography variant="h6">{pointsPhrase}</Typography>
+        <Typography align="center" noWrap variant="h4">{title}</Typography>
+        {rankingNumber && (<Typography align="center" variant="h5" gutterBottom>{rankingPhrase}</Typography>)}
+        <Typography align="center" variant="h6">{pointsPhrase}</Typography>
         {landscape && (
           <div className={classes.btnArea}>
             <Button size="large" component={Link} to={href} variant="outlined" color="primary">{action}</Button>
