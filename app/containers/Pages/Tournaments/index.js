@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -58,35 +59,37 @@ function Tournaments(props) {
       <div className={classes.root}>
         <section id="headline">
           <HeadlineCard
-            title="Title of a longer featured blog post"
-            desc="Multiple lines of text that form the lede, informing new readers quickly and efficiently about what&apos;s most interesting in this post&apos;s contents…"
-            thumbnail={img[0]}
+            title="Torneo de Verano 2022"
+            desc="Partidos emocionantes"
+            thumbnail="/images/banners/banner5.jpg"
           />
         </section>
         <Divider className={classes.divider} />
         <Hidden mdUp>
-          <Typography variant="h4" gutterBottom>Popular Post</Typography>
+          <Typography variant="h4" gutterBottom>Draw del torneo</Typography>
         </Hidden>
         <Grid container spacing={3}>
           <Grid item md={6} xs={12}>
             <ShowcaseCard
               landscape
-              title="Post title"
+              title="Grupos"
+              subtitle="Calendario"
               date="Nov 12"
               desc="Aenean facilisis vitae purus facilisis semper."
-              action="Read more"
-              image={img[5]}
+              action="Ver"
+              image="/images/banners/banner3.jpg"
               href="/blog/article"
             />
           </Grid>
           <Grid item md={6} xs={12}>
             <ShowcaseCard
               landscape
-              title="Featured post"
+              title="Draw"
+              subtitle="Calendario"
               date="Nov 11"
               desc="Duis sed augue phasellus ante massa."
-              action="Read more"
-              image={img[6]}
+              action="Ver"
+              image="/images/banners/banner4.jpg"
               href="/blog/article"
             />
           </Grid>

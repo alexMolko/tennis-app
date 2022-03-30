@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -15,6 +16,7 @@ function ShowcaseCard(props) {
   const {
     classes,
     title,
+    subtitle,
     pointsNumber,
     action,
     image,
@@ -27,7 +29,7 @@ function ShowcaseCard(props) {
     points,
   } = props;
   const rankingPhrase = `${ranking} ${rankingNumber}`;
-  const pointsPhrase = `${pointsNumber} ${points}`;
+  const subtitlePhrase = subtitle || `${pointsNumber} ${points}`;
   return (
     <Card className={classNames(noMargin ? classes.gutterBottom : classes.cardMedia, landscape && classes.landscapeCard)}>
       <CardMedia
@@ -43,7 +45,7 @@ function ShowcaseCard(props) {
       <CardContent>
         <Typography align="center" noWrap variant="h4">{title}</Typography>
         {rankingNumber && (<Typography align="center" variant="h5" gutterBottom>{rankingPhrase}</Typography>)}
-        <Typography align="center" variant="h6">{pointsPhrase}</Typography>
+        <Typography align="center" variant="h6">{subtitlePhrase}</Typography>
         {landscape && (
           <div className={classes.btnArea}>
             <Button size="large" component={Link} to={href} variant="outlined" color="primary">{action}</Button>
@@ -72,6 +74,7 @@ ShowcaseCard.propTypes = {
   href: PropTypes.string,
   points: PropTypes.string,
   ranking: PropTypes.string,
+  subtitle: PropTypes.string,
 };
 
 ShowcaseCard.defaultProps = {
@@ -82,6 +85,7 @@ ShowcaseCard.defaultProps = {
   href: '#',
   points: '',
   ranking: 'undefined',
+  subtitle: ''
 };
 
 export default withStyles(styles)(ShowcaseCard);
