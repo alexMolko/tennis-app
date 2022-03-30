@@ -24,24 +24,22 @@ import 'dan-styles/vendors/slick-carousel/slick.css';
 import 'dan-styles/vendors/slick-carousel/slick-theme.css';
 
 let id = 0;
-function createData(name, calories, fat, carbs, protein) {
+function createData(jugador, puntos, ganados, perdidos) {
   id += 1;
   return {
     id,
-    name,
-    calories,
-    fat,
-    carbs,
-    protein
+    jugador,
+    puntos,
+    ganados,
+    perdidos
   };
 }
 
 const data = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
+  createData('Carlos Maya', 9, 3, 0),
+  createData('Roberto Gutierrez', 3, 1, 2),
+  createData('Taylor Fritz', 3, 1, 2),
+  createData('Pedro Martinez', 3, 1, 2)
 ];
 
 function Tournaments(props) {
@@ -99,22 +97,52 @@ function Tournaments(props) {
             <div className={classes.rootTable}>
               <Table className={classNames(classes.table, classes.stripped)}>
                 <TableHead>
+                  <Typography variant="h3">Grupo 1</Typography>
                   <TableRow>
-                    <TableCell padding="default">Dessert (100g serving)</TableCell>
-                    <TableCell align="right">Calories</TableCell>
-                    <TableCell align="right">Fat (g)</TableCell>
-                    <TableCell align="right">Carbs (g)</TableCell>
-                    <TableCell align="right">Protein (g)</TableCell>
+                    <TableCell align="default">Posición</TableCell>
+                    <TableCell padding="default">Jugador</TableCell>
+                    <TableCell align="default">Puntos</TableCell>
+                    <TableCell align="default">Ganados</TableCell>
+                    <TableCell align="default">Perdidos</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {data.map(n => ([
                     <TableRow key={n.id}>
-                      <TableCell padding="default">{n.name}</TableCell>
-                      <TableCell align="right">{n.calories}</TableCell>
-                      <TableCell align="right">{n.fat}</TableCell>
-                      <TableCell align="right">{n.carbs}</TableCell>
-                      <TableCell align="right">{n.protein}</TableCell>
+                      <TableCell align="default">{n.id}</TableCell>
+                      <TableCell padding="default">{n.jugador}</TableCell>
+                      <TableCell align="default">{n.puntos}</TableCell>
+                      <TableCell align="default">{n.ganados}</TableCell>
+                      <TableCell align="default">{n.perdidos}</TableCell>
+                    </TableRow>
+                  ]))}
+                </TableBody>
+              </Table>
+            </div>
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item md={12} xs={12}>
+            <div className={classes.rootTable}>
+              <Table className={classNames(classes.table, classes.stripped)}>
+                <TableHead>
+                  <Typography variant="h3">Grupo 2</Typography>
+                  <TableRow>
+                    <TableCell align="default">Posición</TableCell>
+                    <TableCell padding="default">Jugador</TableCell>
+                    <TableCell align="default">Puntos</TableCell>
+                    <TableCell align="default">Ganados</TableCell>
+                    <TableCell align="default">Perdidos</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {data.map(n => ([
+                    <TableRow key={n.id}>
+                      <TableCell align="default">{n.id}</TableCell>
+                      <TableCell padding="default">{n.jugador}</TableCell>
+                      <TableCell align="default">{n.puntos}</TableCell>
+                      <TableCell align="default">{n.ganados}</TableCell>
+                      <TableCell align="default">{n.perdidos}</TableCell>
                     </TableRow>
                   ]))}
                 </TableBody>
