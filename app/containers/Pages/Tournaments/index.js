@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
 import React, { Fragment } from 'react';
+import { useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   HeadlineCard, ShowcaseCard
@@ -52,6 +53,7 @@ function Tournaments(props) {
     slidesToShow: 3,
     slidesToScroll: 1
   };
+  const { path } = useRouteMatch();
   return (
     <Fragment>
       <div className={classes.root}>
@@ -76,7 +78,7 @@ function Tournaments(props) {
               desc="Aenean facilisis vitae purus facilisis semper."
               action="Ver"
               image="/images/banners/banner3.jpg"
-              href="/blog/article"
+              href={path + '/matches'}
             />
           </Grid>
           <Grid item md={6} xs={12}>
