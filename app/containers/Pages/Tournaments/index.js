@@ -10,7 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import Hidden from '@material-ui/core/Hidden';
 import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
-import img from 'dan-api/images/photos';
 import classNames from 'classnames';
 import Slider from 'react-slick';
 import Table from '@material-ui/core/Table';
@@ -90,7 +89,7 @@ function Tournaments(props) {
               desc="Duis sed augue phasellus ante massa."
               action="Ver"
               image="/images/banners/banner4.jpg"
-              href="/blog/article"
+              href={path + '/playoffs'}
             />
           </Grid>
         </Grid>
