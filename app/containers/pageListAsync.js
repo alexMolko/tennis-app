@@ -337,6 +337,10 @@ export const Playoffs = loadable(() =>
 import ('./Pages/Playoffs'), {
   fallback: <Loading />,
 });
+export const Rankings = loadable(() =>
+import ('./Pages/Rankings'), {
+  fallback: <Loading />,
+});
 export const Timeline = loadable(() =>
   import ('./SampleApps/Timeline'), {
     fallback: <Loading />,

@@ -96,7 +96,8 @@ import {
   Players,
   Tournaments,
   Matches,
-  Playoffs
+  Playoffs,
+  Rankings
 } from "../pageListAsync";
 
 function Application(props) {
@@ -216,6 +217,7 @@ function Application(props) {
         <Route path="/app/pages/tournaments" exact component={Tournaments} />
         <Route path="/app/pages/tournaments/matches" component={Matches} />
         <Route path="/app/pages/tournaments/playoffs" component={Playoffs} />
+        <Route path="/app/pages/rankings" component={Rankings} />
         <Route path="/app/pages/blank-page" component={BlankPage} />
         <Route path="/app/pages/photo-gallery" component={Photos} />
         <Route path="/app/pages/pricing" component={Pricing} />
