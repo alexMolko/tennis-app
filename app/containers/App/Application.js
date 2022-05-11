@@ -95,6 +95,8 @@ import {
   NotFound,
   Players,
   Tournaments,
+  Matches,
+  Playoffs
 } from "../pageListAsync";
 
 function Application(props) {
@@ -211,7 +213,9 @@ function Application(props) {
         <Route exact path="/app/pages" component={Parent} />
         <Route path="/app/pages/user-profile" component={Profile} />
         <Route path="/app/pages/players" component={Players} />
-        <Route path="/app/pages/tournaments" component={Tournaments} />
+        <Route path="/app/pages/tournaments" exact component={Tournaments} />
+        <Route path="/app/pages/tournaments/matches" component={Matches} />
+        <Route path="/app/pages/tournaments/playoffs" component={Playoffs} />
         <Route path="/app/pages/blank-page" component={BlankPage} />
         <Route path="/app/pages/photo-gallery" component={Photos} />
         <Route path="/app/pages/pricing" component={Pricing} />

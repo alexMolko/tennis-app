@@ -146,3 +146,5 @@ export ErrorWrap from './Error/ErrorWrap';
 export TemplateSettings from './TemplateSettings';
 // Head to Head
 export HeadToHead from './HeadToHead/HeadToHead';
+// Brackets
+export Brackets from './Brackets/Brackets';

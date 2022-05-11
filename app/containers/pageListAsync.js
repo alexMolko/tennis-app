@@ -329,6 +329,14 @@ export const Tournaments = loadable(() =>
 import ('./Pages/Tournaments'), {
   fallback: <Loading />,
 });
+export const Matches = loadable(() =>
+import ('./Pages/Matches'), {
+  fallback: <Loading />,
+});
+export const Playoffs = loadable(() =>
+import ('./Pages/Playoffs'), {
+  fallback: <Loading />,
+});
 export const Timeline = loadable(() =>
   import ('./SampleApps/Timeline'), {
     fallback: <Loading />,
