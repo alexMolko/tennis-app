@@ -27,7 +27,7 @@ function Connection(props) {
               title={data.title}
               connection={data.connection}
               isVerified={data.verified}
-              btnText="See Profile"
+              btnText="Ver perfil"
             />
           </Grid>
         ))

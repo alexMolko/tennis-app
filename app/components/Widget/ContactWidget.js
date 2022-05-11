@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -238,6 +240,7 @@ function ContactWidget(props) {
               <Tab
                 label={(
                   <Badge className={classes.tabNotif} color="secondary">
+
                     Información
                   </Badge>
                 )}

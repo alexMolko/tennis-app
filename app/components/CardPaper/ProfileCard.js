@@ -25,7 +25,6 @@ function ProfileCard(props) {
     avatar,
     name,
     title,
-    connection,
     isVerified,
     btnText
   } = props;
@@ -46,10 +45,6 @@ function ProfileCard(props) {
         <Typography className={classes.subheading} gutterBottom>
           <span className={Type.regular}>{title}</span>
         </Typography>
-        <Typography variant="caption" component="p">
-          {connection}
-            &nbsp;connection
-        </Typography>
         <Button className={classes.buttonProfile} size="large" variant="outlined" color="secondary">
           {btnText}
         </Button>
@@ -60,9 +55,9 @@ function ProfileCard(props) {
           showLabels
           className={classes.bottomLink}
         >
-          <BottomNavigationAction label="20 Connection" icon={<SupervisorAccount />} />
-          <BottomNavigationAction label="10 Favorites" icon={<Favorite />} />
-          <BottomNavigationAction label="5 Albums" icon={<PhotoLibrary />} />
+          <BottomNavigationAction label="20 Ganados" icon={<SupervisorAccount />} />
+          <BottomNavigationAction label="2 Perdidos" icon={<Favorite />} />
+          <BottomNavigationAction label="1 Campeonato" icon={<PhotoLibrary />} />
         </BottomNavigation>
       </CardActions>
     </Card>
@@ -75,7 +70,6 @@ ProfileCard.propTypes = {
   avatar: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  connection: PropTypes.number.isRequired,
   btnText: PropTypes.string.isRequired,
   isVerified: PropTypes.bool
 };
