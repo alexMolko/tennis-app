@@ -1,77 +1,45 @@
-import imgApi from '../images/photos';
-import avatarApi from '../images/avatars';
 const connectionData = [
   {
-    cover: imgApi[41],
-    avatar: avatarApi[6],
-    name: 'John Doe',
-    title: 'UX Designer',
-    connection: 203,
+    cover: '/images/backgrounds/background1.jpg',
+    avatar: '/images/profiles/player6.jpg',
+    name: 'Carlos Maya',
+    title: 'Ranking 1',
     verified: false
   },
   {
-    cover: imgApi[4],
-    avatar: avatarApi[2],
+    cover: '/images/backgrounds/background2.jpg',
+    avatar: '/images/profiles/player7.jpg',
     name: 'Jane Doe',
-    title: 'Administrator',
-    connection: 10,
+    title: 'Ranking 2',
     verified: true
   },
   {
-    cover: imgApi[42],
-    avatar: avatarApi[7],
+    cover: '/images/backgrounds/background3.jpg',
+    avatar: '/images/profiles/player8.jpg',
     name: 'James Doe',
-    title: 'Marketing',
-    connection: 18,
+    title: 'Ranking 3',
     verified: false
   },
   {
-    cover: imgApi[8],
-    avatar: avatarApi[10],
+    cover: '/images/backgrounds/background2.jpg',
+    avatar: '/images/profiles/player9.jpg',
     name: 'Mickey Joe',
     title: 'Teacher Lecture',
-    connection: 6,
     verified: true
   },
   {
-    cover: imgApi[39],
-    avatar: avatarApi[5],
+    cover: '/images/backgrounds/background2.jpg',
+    avatar: '/images/profiles/player3.jpg',
     name: 'Janet Doe',
     title: 'UI Designer',
-    connection: 18,
     verified: false
   },
   {
-    cover: imgApi[49],
-    avatar: avatarApi[1],
+    cover: '/images/backgrounds/background1.jpg',
+    avatar: '/images/profiles/player1.jpg',
     name: 'Michele Joe',
     title: 'Designer',
-    connection: 100,
     verified: true
-  },
-  {
-    cover: imgApi[50],
-    avatar: avatarApi[9],
-    name: 'James Doe',
-    title: 'Programmer',
-    connection: 20,
-    verified: true
-  },
-  {
-    cover: imgApi[45],
-    avatar: avatarApi[8],
-    name: 'Jimmy Doe',
-    title: 'Interior Designer',
-    connection: 1,
-    verified: false
-  },
-  {
-    cover: imgApi[43],
-    avatar: avatarApi[3],
-    name: 'Maya Joe',
-    title: 'Contributor',
-    connection: 100,
-    verified: false
   },
 ];
 
