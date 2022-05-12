@@ -1,13 +1,11 @@
+/* eslint-disable linebreak-style */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import IconButton from '@material-ui/core/IconButton';
 import VerifiedUser from '@material-ui/icons/VerifiedUser';
-import Info from '@material-ui/icons/Info';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { withStyles } from '@material-ui/core/styles';
 import Type from 'dan-styles/Typography.scss';
 import styles from './jss/cover-jss';
@@ -32,10 +30,6 @@ function Cover(props) {
     coverImg,
   } = props;
 
-  const handleClickOpt = event => {
-    setAnchorElOpt(event.currentTarget);
-  };
-
   const handleCloseOpt = () => {
     setAnchorElOpt(null);
   };
@@ -43,18 +37,6 @@ function Cover(props) {
   return (
     <div className={classes.cover} style={{ backgroundImage: `url(${coverImg})` }}>
       <div className={classes.opt}>
-        <IconButton className={classes.button} aria-label="Delete">
-          <Info />
-        </IconButton>
-        <IconButton
-          aria-label="More"
-          aria-owns={anchorElOpt ? 'long-menu' : null}
-          aria-haspopup="true"
-          className={classes.button}
-          onClick={handleClickOpt}
-        >
-          <MoreVertIcon />
-        </IconButton>
         <Menu
           id="long-menu"
           anchorEl={anchorElOpt}
@@ -83,12 +65,15 @@ function Cover(props) {
         <div className={classes.bg}>
           <Typography variant="h6" gutterBottom>
             <span className={Type.medium}>
+
               Ranking
             </span>
+
             &nbsp;
           </Typography>
           <Typography variant="h3" gutterBottom>
             <span className={Type.bold}>
+
              1
             </span>
           </Typography>
