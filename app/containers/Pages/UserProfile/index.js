@@ -102,8 +102,8 @@ function UserProfile(props) {
         </Hidden>
       </AppBar>
       {value === 0 && <TabContainer><About data={dataProps} /></TabContainer>}
-      {value === 1 && <TabContainer><Connection /></TabContainer>}
-      {value === 2 && <TabContainer><Favorites /></TabContainer>}
+      {value === 1 && <TabContainer><Favorites /></TabContainer>}
+      {value === 2 && <TabContainer><Connection /></TabContainer>}
       {value === 3 && <TabContainer><Albums /></TabContainer>}
     </div>
   );
