@@ -1,7 +1,9 @@
+/* eslint-disable linebreak-style */
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { ContactWidget } from 'dan-components';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -35,35 +37,8 @@ function About(props) {
       direction="row"
       spacing={3}
     >
-      <Grid item md={7} xs={12}>
+      <Grid item md={6} xs={12}>
         {/* ----------------------------------------------------------------------*/}
-        {/* My Connection Me */}
-        <PapperBlock title="Partidos recientes" icon="ion-ios-contacts-outline" whiteBg desc="">
-          <List dense className={classes.profileList}>
-            <ListItem button>
-              <Avatar className={classNames(classes.avatar, classes.orangeAvatar)}>H</Avatar>
-              <ListItemText primary="Harry Wells" secondary="2 Mutual Connection" />
-            </ListItem>
-            <ListItem button>
-              <Avatar className={classNames(classes.avatar, classes.purpleAvatar)}>J</Avatar>
-              <ListItemText primary="John DOe" secondary="8 Mutual Connection" />
-            </ListItem>
-            <ListItem button>
-              <Avatar className={classNames(classes.avatar, classes.pinkAvatar)}>V</Avatar>
-              <ListItemText primary="Victor Wanggai" secondary="12 Mutual Connection" />
-            </ListItem>
-            <ListItem button>
-              <Avatar className={classNames(classes.avatar, classes.greenAvatar)}>H</Avatar>
-              <ListItemText primary="Baron Phoenix" secondary="10 Mutual Connection" />
-            </ListItem>
-          </List>
-          <Divider className={classes.divider} />
-          <Grid container justify="center">
-            <Button color="secondary" className={classes.button}>
-              Ver todo
-            </Button>
-          </Grid>
-        </PapperBlock>
         {/* Profile Progress */}
         <div className={classes.progressRoot}>
           <Paper className={classes.styledPaper} elevation={4}>
@@ -85,9 +60,7 @@ function About(props) {
             </Grid>
           </Paper>
         </div>
-      </Grid>
-      <Grid item md={5} xs={12}>
-        {/* ----------------------------------------------------------------------*/}
+        <Divider className={classes.divider} />
         {/* About Me */}
         <PapperBlock title="Carlos Maya" icon="ion-ios-contact-outline" whiteBg noMargin desc='"Never give up!"'>
           <Divider className={classes.divider} />
@@ -166,6 +139,22 @@ function About(props) {
           </Grid>
         </PapperBlock>
         {/* ----------------------------------------------------------------------*/}
+      </Grid>
+      <Grid item md={5} xs={12}>
+        {/* ----------------------------------------------------------------------*/}
+        {/* My Connection Me */}
+        <PapperBlock title="Partidos recientes" icon="ion-ios-contacts-outline" whiteBg desc="">
+          <List dense className={classes.profileList}>
+            <ContactWidget />
+          </List>
+          <Divider className={classes.divider} />
+          <Grid container justify="center">
+            <Button color="secondary" className={classes.button}>
+
+              Ver todo
+            </Button>
+          </Grid>
+        </PapperBlock>
       </Grid>
     </Grid>
   );

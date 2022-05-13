@@ -1,9 +1,8 @@
-import avatarApi from '../images/avatars';
 const dummyContents = {
   user: {
     name: 'Carlos Maya',
     title: 'Administrator',
-    avatar: avatarApi[6],
+    avatar: '/images/profiles/player5.jpg',
     status: 'online'
   },
   text: {
