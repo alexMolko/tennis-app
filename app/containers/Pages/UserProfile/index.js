@@ -18,7 +18,7 @@ import { connect } from 'react-redux';
 import {
   Cover,
   About,
-  Connection,
+  Voting,
   Favorites,
   Albums,
 } from 'dan-components';
@@ -103,7 +103,7 @@ function UserProfile(props) {
       </AppBar>
       {value === 0 && <TabContainer><About data={dataProps} /></TabContainer>}
       {value === 1 && <TabContainer><Favorites /></TabContainer>}
-      {value === 2 && <TabContainer><Connection /></TabContainer>}
+      {value === 2 && <TabContainer><Voting /></TabContainer>}
       {value === 3 && <TabContainer><Albums /></TabContainer>}
     </div>
   );
