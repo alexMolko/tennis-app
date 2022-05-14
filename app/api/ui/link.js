@@ -4,7 +4,7 @@ module.exports = {
   market: '#',
   email: '/app/pages/email',
   profile: '/app/pages/user-profile',
-  calendar: '/app/pages/calendar',
+  calendar: '/app/pages/tournaments/matches',
   twitter: '#',
   github: '#',
   pinterest: '#',

@@ -97,7 +97,7 @@ import {
   Tournaments,
   Matches,
   Playoffs,
-  Rankings
+  Rankings,
 } from "../pageListAsync";
 
 function Application(props) {
