@@ -174,7 +174,7 @@ const styles = theme => ({
       background: theme.palette.type === 'dark' ? theme.palette.grey[700] : fade(theme.palette.common.white, 0.8),
       boxShadow: theme.shade.light,
       '& input': {
-        color: theme.palette.grey[700],
+        color: theme.palette.common.white,
       },
       '& input::placeholder': {
         color: theme.palette.grey[400],
