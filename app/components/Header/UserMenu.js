@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -151,12 +152,6 @@ function UserMenu(props) {
       >
         <MenuItem onClick={handleClose} component={Link} to={link.profile}>Mi perfil</MenuItem>
         <MenuItem onClick={handleClose} component={Link} to={link.calendar}>Mis partidos</MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to={link.email}>
-          Mensajes
-          <ListItemIcon>
-            <Badge className={classNames(classes.badge, classes.badgeMenu)} badgeContent={2} color="secondary" />
-          </ListItemIcon>
-        </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose} component={Link} to="/">
           <ListItemIcon>

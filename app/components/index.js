@@ -95,6 +95,7 @@ export About from './Profile/About';
 export Albums from './Profile/Albums';
 export Connection from './Profile/Connection';
 export Favorites from './Profile/Favorites';
+export Voting from './Profile/Voting';
 // Card
 export ProfileCard from './CardPaper/ProfileCard';
 export GeneralCard from './CardPaper/GeneralCard';
