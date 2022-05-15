@@ -40,10 +40,10 @@ function ResetForm(props) {
         </NavLink>
       </div>
       <Typography variant="h4" className={classes.title} gutterBottom>
-        Reset Password
+        Cambiar contraseña
       </Typography>
       <Typography variant="caption" className={classes.subtitle} gutterBottom align="center">
-        Send reset password link to Your email
+        Se enviará un link para cambiar la contraseña al correo registrado
       </Typography>
       <section className={classes.formWrap}>
         <form onSubmit={handleSubmit}>
@@ -52,8 +52,8 @@ function ResetForm(props) {
               <Field
                 name="email"
                 component={TextFieldRedux}
-                placeholder="Your Email"
-                label="Your Email"
+                placeholder="Su email"
+                label="Su email"
                 required
                 validate={[required, email]}
                 className={classes.field}
@@ -62,7 +62,7 @@ function ResetForm(props) {
           </div>
           <div className={classes.btnArea}>
             <Button variant="contained" color="primary" type="submit">
-              Send Reset Link
+              Enviar link
               <ArrowForward className={classNames(classes.rightIcon, classes.iconSmall)} disabled={submitting || pristine} />
             </Button>
           </div>
