@@ -7,8 +7,6 @@ import Grow from '@material-ui/core/Grow';
 import Popper from '@material-ui/core/Popper';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import classNames from 'classnames';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
@@ -142,21 +140,4 @@ MainMenu.propTypes = {
   dataMenu: PropTypes.array.isRequired,
 };
 
-const openAction = (key, keyParent) => ({ type: 'OPEN_SUBMENU', key, keyParent });
-const reducer = 'ui';
-
-const mapStateToProps = state => ({
-  ...state,
-  open: state.getIn([reducer, 'subMenuOpen'])
-});
-
-const mapDispatchToProps = dispatch => ({
-  openSubMenu: bindActionCreators(openAction, dispatch)
-});
-
-const MainMenuMapped = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MainMenu);
-
-export default withStyles(styles)(MainMenuMapped);
+export default withStyles(styles)(MainMenu);

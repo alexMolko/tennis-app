@@ -14,28 +14,13 @@ import styles from 'dan-components/SocialMedia/jss/cover-jss';
 import data from '../../SampleApps/Timeline/api/timelineData';
 import { fetchAction } from '../../SampleApps/Timeline/reducers/timelineActions';
 
-function TabContainer(props) {
-  const { children } = props;
-  return (
-    <div style={{ paddingTop: 8 * 3 }}>
-      {children}
-    </div>
-  );
-}
-
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
 function Players(props) {
   const title = brand.name + ' - Jugadores';
   const description = brand.desc;
   const { fetchData } = props;
-
   useEffect(() => {
     fetchData(data);
   }, [fetchData, data]);
-
   return (
     <div>
       <Helmet>

@@ -4,11 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import brand from 'dan-api/dummy/brand';
-import dummy from 'dan-api/dummy/dummyContents';
 import {
   ContactList,
   ContactDetail,
-  AddContact,
   Notification
 } from 'dan-components';
 import styles from 'dan-components/Contact/contact-jss';
@@ -16,10 +14,7 @@ import {
   fetchAction,
   showDetailAction,
   hideDetailAction,
-  submitAction,
   editAction,
-  addAction,
-  closeAction,
   removeAction,
   addToFavoriteAction,
   searchAction,
@@ -30,22 +25,17 @@ import data from './api/contactData';
 function Contact(props) {
   // Redux State
   const reducer = 'contact';
-  const avatarInit = useSelector(state => state.getIn([reducer, 'avatarInit']));
   const dataContact = useSelector(state => state.getIn([reducer, 'contactList']));
   const itemSelected = useSelector(state => state.getIn([reducer, 'selectedIndex']));
   const keyword = useSelector(state => state.getIn([reducer, 'keywordValue']));
-  const open = useSelector(state => state.getIn([reducer, 'openFrm']));
   const showMobileDetail = useSelector(state => state.getIn([reducer, 'showMobileDetail']));
   const messageNotif = useSelector(state => state.getIn([reducer, 'notifMsg']));
 
   // Dispatcher
   const fetchData = useDispatch();
-  const submit = useDispatch();
   const showDetail = useDispatch();
   const hideDetail = useDispatch();
   const edit = useDispatch();
-  const add = useDispatch();
-  const close = useDispatch();
   const remove = useDispatch();
   const favorite = useDispatch();
   const search = useDispatch();
@@ -55,11 +45,6 @@ function Contact(props) {
     fetchData(fetchAction(data));
   }, []);
 
-  const submitContact = (item, avatar) => {
-    const avatarBase64 = typeof avatar === 'object' ? URL.createObjectURL(avatar) : avatar;
-    const avatarPreview = avatar !== null ? avatarBase64 : dummy.user.avatar;
-    submit(submitAction(item, avatarPreview));
-  };
 
   const title = brand.name + ' - Contact';
   const description = brand.desc;
@@ -80,7 +65,6 @@ function Contact(props) {
         <ContactList
           addFn
           total={dataContact.size}
-          addContact={() => add(addAction)}
           clippedRight
           itemSelected={itemSelected}
           dataContact={dataContact}
@@ -98,13 +82,6 @@ function Contact(props) {
           favorite={(payload) => favorite(addToFavoriteAction(payload))}
         />
       </div>
-      <AddContact
-        addContact={() => add(addAction)}
-        openForm={open}
-        closeForm={() => close(closeAction)}
-        submit={submitContact}
-        avatarInit={avatarInit}
-      />
     </div>
   );
 }

@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -129,21 +127,4 @@ MainMenu.propTypes = {
   dataMenu: PropTypes.array.isRequired,
 };
 
-const openAction = (key, keyParent) => ({ type: 'OPEN_SUBMENU', key, keyParent });
-const reducer = 'ui';
-
-const mapStateToProps = state => ({
-  ...state,
-  open: state.getIn([reducer, 'subMenuOpen'])
-});
-
-const mapDispatchToProps = dispatch => ({
-  openSubMenu: bindActionCreators(openAction, dispatch)
-});
-
-const MainMenuMapped = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MainMenu);
-
-export default withStyles(styles)(MainMenuMapped);
+export default withStyles(styles)(MainMenu);

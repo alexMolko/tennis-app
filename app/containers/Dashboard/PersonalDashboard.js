@@ -1,11 +1,12 @@
 /* eslint-disable linebreak-style */
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import brand from 'dan-api/dummy/brand';
 import { Helmet } from 'react-helmet';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   SliderWidget,
   PapperBlock,
@@ -13,6 +14,7 @@ import {
   NewsWidget,
   CarouselWidget
 } from 'dan-components';
+import { fetchAction } from './actions/playerActions';
 import styles from './dashboard-jss';
 
 
@@ -20,6 +22,44 @@ function PersonalDashboard(props) {
   const title = brand.name + ' - Home';
   const description = brand.desc;
   const { classes } = props;
+
+  // Dispatcher
+  const fetchData = useDispatch();
+  const payload = [
+    {
+      id: 1,
+      category: 'Sporting Goods',
+      price: '49.99',
+      date: '4/3/2018',
+      time: 'Tue Apr 03 2018 00:00:00 GMT+0700 (WIB)',
+      name: 'football',
+      available: true,
+      edited: false,
+    }, {
+      id: 2,
+      category: 'Other',
+      price: '9.99',
+      date: '4/2/2018',
+      time: 'Tue Apr 03 2018 00:00:00 GMT+0700 (WIB)',
+      name: 'baseball',
+      available: true,
+      edited: false,
+    }, {
+      id: 3,
+      category: 'Sporting Goods',
+      price: '29.99',
+      date: '4/1/2018',
+      time: 'Tue Apr 03 2018 00:00:00 GMT+0700 (WIB)',
+      name: 'basketball',
+      available: false,
+      edited: false,
+    }
+  ];
+  useEffect(() => {
+    fetchData(fetchAction(payload));
+  }, []);
+  const dataTable = useSelector(state => state.getIn(['players', 'dataTable']));
+  console.log('ITEMS ' + dataTable);
   return (
     <div>
       <Helmet>
