@@ -3,12 +3,11 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import datas from 'dan-api/apps/connectionData';
 import ProfileCard from '../CardPaper/ProfileCard';
 import styles from './profile-jss';
 
 function Connection(props) {
-  const { classes } = props;
+  const { classes, playersData } = props;
   return (
     <Grid
       container
@@ -19,15 +18,15 @@ function Connection(props) {
       className={classes.rootx}
     >
       {
-        datas.map((data, index) => (
-          <Grid item md={4} sm={6} xs={12} key={index.toString()}>
+        playersData.valueSeq().map((data) => (
+          <Grid item md={4} sm={6} xs={12} key={data.get('idJugador')}>
             <ProfileCard
-              cover={data.cover}
-              avatar={data.avatar}
-              name={data.name}
-              title={data.title}
+              fotos={data.get('fotos')}
+              name={data.get('nickName')}
+              title={data.get('ranking')}
               connection={data.connection}
-              isVerified={data.verified}
+              statistics={data.get('estadisticas')}
+              isVerified
               btnText="Ver perfil"
             />
           </Grid>
@@ -38,7 +37,8 @@ function Connection(props) {
 }
 
 Connection.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  playersData: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Connection);

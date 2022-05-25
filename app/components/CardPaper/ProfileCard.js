@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable linebreak-style */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -22,29 +23,28 @@ import styles from './cardStyle-jss';
 function ProfileCard(props) {
   const {
     classes,
-    cover,
-    avatar,
     name,
     title,
     isVerified,
-    btnText
+    btnText,
+    fotos,
+    statistics
   } = props;
-
   return (
     <Card className={classes.cardSocmed}>
       <CardMedia
         className={classes.mediaProfile}
-        image={cover}
+        image={fotos.get(0)}
         title="cover"
       />
       <CardContent className={classes.contentProfile}>
-        <Avatar alt="avatar" src={avatar} className={classes.avatarBig} />
+        <Avatar alt="avatar" src={fotos.get(1)} className={classes.avatarBig} />
         <Typography variant="h6" className={classes.name} gutterBottom>
           {name}
           {isVerified && <VerifiedUser className={classes.verified} />}
         </Typography>
         <Typography className={classes.subheading} gutterBottom>
-          <span className={Type.regular}>{title}</span>
+          <span className={Type.regular}>Ranking {title}</span>
         </Typography>
         <Button className={classes.buttonProfile} size="large" variant="outlined" color="secondary">
           {btnText}
@@ -56,23 +56,23 @@ function ProfileCard(props) {
           showLabels
           className={classes.bottomLink}
         >
-          <BottomNavigationAction label="20 Ganados" icon={<SupervisorAccount />} />
-          <BottomNavigationAction label="2 Perdidos" icon={<Favorite />} />
-          <BottomNavigationAction label="1 Campeonato" icon={<PhotoLibrary />} />
+          <BottomNavigationAction label={statistics.get('Ganados').get('N') + ' Ganados'} icon={<SupervisorAccount />} />
+          <BottomNavigationAction label={statistics.get('Perdidos').get('N') + ' Perdidos'} icon={<Favorite />} />
+          <BottomNavigationAction label={statistics.get('Titulos').get('N') + ' Titulos'} icon={<PhotoLibrary />} />
         </BottomNavigation>
       </CardActions>
     </Card>
   );
 }
-
+// {statistics.get('Ganados').get('N') + ' Ganados'}
 ProfileCard.propTypes = {
   classes: PropTypes.object.isRequired,
-  cover: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   btnText: PropTypes.string.isRequired,
-  isVerified: PropTypes.bool
+  isVerified: PropTypes.bool,
+  fotos: PropTypes.array.isRequired,
+  statistics: PropTypes.object.isRequired
 };
 
 ProfileCard.defaultProps = {

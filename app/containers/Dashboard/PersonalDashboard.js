@@ -25,41 +25,12 @@ function PersonalDashboard(props) {
 
   // Dispatcher
   const fetchData = useDispatch();
-  const payload = [
-    {
-      id: 1,
-      category: 'Sporting Goods',
-      price: '49.99',
-      date: '4/3/2018',
-      time: 'Tue Apr 03 2018 00:00:00 GMT+0700 (WIB)',
-      name: 'football',
-      available: true,
-      edited: false,
-    }, {
-      id: 2,
-      category: 'Other',
-      price: '9.99',
-      date: '4/2/2018',
-      time: 'Tue Apr 03 2018 00:00:00 GMT+0700 (WIB)',
-      name: 'baseball',
-      available: true,
-      edited: false,
-    }, {
-      id: 3,
-      category: 'Sporting Goods',
-      price: '29.99',
-      date: '4/1/2018',
-      time: 'Tue Apr 03 2018 00:00:00 GMT+0700 (WIB)',
-      name: 'basketball',
-      available: false,
-      edited: false,
-    }
-  ];
   useEffect(() => {
-    fetchData(fetchAction(payload));
+    fetchData(fetchAction());
   }, []);
   const dataTable = useSelector(state => state.getIn(['players', 'dataTable']));
-  console.log('ITEMS ' + dataTable);
+  dataTable.valueSeq().forEach(v => console.log('items ' + v.get('Nombre')));
+
   return (
     <div>
       <Helmet>

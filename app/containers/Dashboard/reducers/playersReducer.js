@@ -12,8 +12,7 @@ export default function reducer(state = initialImmutableState, action = {}) {
   switch (action.type) {
     case `${FETCH_PLAYERS}`:
       return state.withMutations((mutableState) => {
-        const items = fromJS(action.items);
-        mutableState.set('dataTable', items);
+        mutableState.set('dataTable', state);
       });
     case `${RECEIVED_PLAYERS}`:
       return state.withMutations((mutableState) => {
