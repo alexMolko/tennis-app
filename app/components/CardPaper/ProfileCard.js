@@ -14,9 +14,9 @@ import Avatar from '@material-ui/core/Avatar';
 import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
-import Favorite from '@material-ui/icons/Favorite';
-import PhotoLibrary from '@material-ui/icons/PhotoLibrary';
+import DoneAll from '@material-ui/icons/DoneAll';
+import EmojiEvents from '@material-ui/icons/EmojiEvents';
+import Cancel from '@material-ui/icons/Cancel';
 import Divider from '@material-ui/core/Divider';
 import styles from './cardStyle-jss';
 
@@ -56,9 +56,9 @@ function ProfileCard(props) {
           showLabels
           className={classes.bottomLink}
         >
-          <BottomNavigationAction label={statistics.get('Ganados').get('N') + ' Ganados'} icon={<SupervisorAccount />} />
-          <BottomNavigationAction label={statistics.get('Perdidos').get('N') + ' Perdidos'} icon={<Favorite />} />
-          <BottomNavigationAction label={statistics.get('Titulos').get('N') + ' Titulos'} icon={<PhotoLibrary />} />
+          <BottomNavigationAction label={statistics.get('Titulos').get('N') + ' Titulos'} icon={<EmojiEvents />} />
+          <BottomNavigationAction label={statistics.get('Ganados').get('N') + ' Ganados'} icon={<DoneAll />} />
+          <BottomNavigationAction label={statistics.get('Perdidos').get('N') + ' Perdidos'} icon={<Cancel />} />
         </BottomNavigation>
       </CardActions>
     </Card>
