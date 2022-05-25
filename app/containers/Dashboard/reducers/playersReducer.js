@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
 import { fromJS, List } from 'immutable';
-import { FETCH_PLAYERS, RECEIVED_PLAYERS } from '../constants/playerConstants';
+import { FETCH_PLAYERS, RECEIVED_PLAYERS, FETCH_TOP8 } from '../constants/playerConstants';
 
 const initialState = {
   dataTable: List([])
@@ -18,6 +18,10 @@ export default function reducer(state = initialImmutableState, action = {}) {
       return state.withMutations((mutableState) => {
         const items = fromJS(action.json);
         mutableState.set('dataTable', items);
+      });
+    case `${FETCH_TOP8}`:
+      return state.withMutations((mutableState) => {
+        mutableState.set('dataTable', List([]));
       });
     default:
       return state;

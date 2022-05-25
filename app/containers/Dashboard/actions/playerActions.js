@@ -5,7 +5,6 @@ export const fetchAction = () => ({
   type: `${types.FETCH_PLAYERS}`
 });
 
-export const fetchAction2 = (items) => ({
-  type: `${types.FETCH_PLAYERS}`,
-  items
+export const fetchActionTop8 = () => ({
+  type: `${types.FETCH_TOP8}`
 });

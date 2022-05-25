@@ -14,8 +14,9 @@ import {
   NewsWidget,
   CarouselWidget
 } from 'dan-components';
-import { fetchAction } from './actions/playerActions';
+import { /* fetchAction , */ fetchActionTop8 } from './actions/playerActions';
 import styles from './dashboard-jss';
+import Typography from '../UiElements/Typography';
 
 
 function PersonalDashboard(props) {
@@ -26,11 +27,10 @@ function PersonalDashboard(props) {
   // Dispatcher
   const fetchData = useDispatch();
   useEffect(() => {
-    fetchData(fetchAction());
+    fetchData(fetchActionTop8());
   }, []);
-  const dataTable = useSelector(state => state.getIn(['players', 'dataTable']));
-  dataTable.valueSeq().forEach(v => console.log('items ' + v.get('Nombre')));
-
+  const top8 = useSelector(state => state.getIn(['players', 'dataTable']));
+  console.log('validando top8 ' + top8.count());
   return (
     <div>
       <Helmet>
@@ -54,16 +54,32 @@ function PersonalDashboard(props) {
           </div>
         </Grid>
       </Grid>
-      <Grid container spacing={3} className={classes.root}>
-        <Grid item md={12} sm={12} xs={12}>
-          <PapperBlock title="Top 8 Ranking" icon="ion-ios-tennisball">
-            <div>
-              <CarouselWidget />
-            </div>
-          </PapperBlock>
-        </Grid>
-      </Grid>
+      {
+        top8.count() > 0 ? (
+          <Grid container spacing={3} className={classes.root}>
+            <Grid item md={12} sm={12} xs={12}>
+              <PapperBlock title="Top 8 Ranking" icon="ion-ios-tennisball">
+                <div>
+                  <CarouselWidget top8={top8} />
+                </div>
+              </PapperBlock>
+            </Grid>
+          </Grid>
+        )
+          : (
+            <Grid container spacing={3} className={classes.root}>
+              <Grid item md={12} sm={12} xs={12}>
+                <PapperBlock title="Top 8 Ranking" icon="ion-ios-tennisball">
+                  <div>
+                    <Typography align="center" noWrap variant="h4"> A espera de rankings</Typography>
+                  </div>
+                </PapperBlock>
+              </Grid>
+            </Grid>
+          )
+      }
       <Divider className={classes.divider} />
+
       {/* 2nd Section */}
       <Grid container spacing={2} className={classes.root}>
         {/*

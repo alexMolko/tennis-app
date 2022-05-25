@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable linebreak-style */
 import React from 'react';
@@ -38,7 +39,7 @@ function ProfileCard(props) {
         title="cover"
       />
       <CardContent className={classes.contentProfile}>
-        <Avatar alt="avatar" src={fotos.get(1)} className={classes.avatarBig} />
+        <Avatar alt="avatar" src={fotos.get(2)} className={classes.avatarBig} />
         <Typography variant="h6" className={classes.name} gutterBottom>
           {name}
           {isVerified && <VerifiedUser className={classes.verified} />}
@@ -64,7 +65,6 @@ function ProfileCard(props) {
     </Card>
   );
 }
-// {statistics.get('Ganados').get('N') + ' Ganados'}
 ProfileCard.propTypes = {
   classes: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,

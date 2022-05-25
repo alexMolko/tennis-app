@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import React from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
@@ -5,7 +6,6 @@ import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowForward from '@material-ui/icons/ArrowForward';
 import ArrowBack from '@material-ui/icons/ArrowBack';
-import carouselData from 'dan-api/images/carouselData';
 import Grid from '@material-ui/core/Grid';
 import { ShowcaseCard } from 'dan-components';
 import 'dan-styles/vendors/slick-carousel/slick-carousel.css';
@@ -54,7 +54,7 @@ SamplePrevArrow.defaultProps = {
 };
 
 function CarouselWidget(props) {
-  const { classes } = props;
+  const { classes, top8 } = props;
   const settings = {
     dots: true,
     infinite: true,
@@ -92,16 +92,16 @@ function CarouselWidget(props) {
   return (
     <Grid className="container custom-arrow">
       <Slider {...settings}>
-        {carouselData.map((item, index) => (
-          <Grid spacing={3} className={classes.carouselItem} key={index.toString()}>
+        {top8.valueSeq().map((item, index) => (
+          <Grid spacing={3} className={classes.carouselItem} key={index.toString() + item.get('idJugador')}>
             <Grid item md={12} xs={12}>
               <ShowcaseCard
                 landscape
-                title={item.title}
-                rankingNumber={item.ranking}
-                pointsNumber={item.points}
+                title={item.get('nickName')}
+                rankingNumber={item.get('ranking')}
+                pointsNumber={item.get('puntos')}
                 action="Ver perfil"
-                image={item.img}
+                fotos={item.get('fotos')}
                 href={item.href}
                 ranking="Ranking : "
                 points="puntos"
@@ -116,6 +116,7 @@ function CarouselWidget(props) {
 
 CarouselWidget.propTypes = {
   classes: PropTypes.object.isRequired,
+  top8: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(CarouselWidget);
