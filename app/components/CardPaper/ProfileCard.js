@@ -71,7 +71,7 @@ ProfileCard.propTypes = {
   title: PropTypes.string.isRequired,
   btnText: PropTypes.string.isRequired,
   isVerified: PropTypes.bool,
-  fotos: PropTypes.array.isRequired,
+  fotos: PropTypes.object.isRequired,
   statistics: PropTypes.object.isRequired
 };
 

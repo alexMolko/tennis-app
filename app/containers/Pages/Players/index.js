@@ -1,11 +1,11 @@
 /* eslint-disable linebreak-style */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import brand from 'dan-api/dummy/brand';
 import { withStyles } from '@material-ui/core/styles';
 import { bindActionCreators } from 'redux';
-import { connect, useSelector } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 import {
   Connection,
 } from 'dan-components';
@@ -15,6 +15,13 @@ import { fetchAction } from '../../Dashboard/actions/playerActions';
 function Players() {
   const title = brand.name + ' - Jugadores';
   const description = brand.desc;
+
+  // Dispatcher
+  const fetchDataPlayers = useDispatch();
+  useEffect(() => {
+    fetchDataPlayers(fetchAction());
+  }, []);
+
   const playersData = useSelector(state => state.getIn(['players', 'dataTable']));
   return (
     <div>
@@ -26,7 +33,11 @@ function Players() {
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
       </Helmet>
-      <Connection playersData={playersData} />
+      {
+        playersData.count() > 0
+          ? <Connection playersData={playersData} />
+          : <p>Loading</p>
+      }
     </div>
   );
 }
