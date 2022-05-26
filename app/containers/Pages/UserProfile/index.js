@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import brand from 'dan-api/dummy/brand';
 import AppBar from '@material-ui/core/AppBar';
-import dummy from 'dan-api/dummy/dummyContents';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Hidden from '@material-ui/core/Hidden';
@@ -13,8 +12,7 @@ import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
 import Favorite from '@material-ui/icons/Favorite';
 import PhotoLibrary from '@material-ui/icons/PhotoLibrary';
 import { withStyles } from '@material-ui/core/styles';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch, connect } from 'react-redux';
 import {
   Cover,
   About,
@@ -24,8 +22,7 @@ import {
 } from 'dan-components';
 import bgCover from 'dan-images/petal_bg.svg';
 import styles from 'dan-components/SocialMedia/jss/cover-jss';
-import data from '../../SampleApps/Timeline/api/timelineData';
-import { fetchAction } from '../../SampleApps/Timeline/reducers/timelineActions';
+import { fetchActionPlayer } from '../../Dashboard/actions/playerActions';
 
 function TabContainer(props) {
   const { children } = props;
@@ -43,13 +40,16 @@ TabContainer.propTypes = {
 function UserProfile(props) {
   const title = brand.name + ' - Profile';
   const description = brand.desc;
-  const { dataProps, classes, fetchData } = props;
+  const { dataProps, classes } = props;
   const [value, setValue] = useState(0);
 
+  // Dispatcher
+  const fetchData = useDispatch();
   useEffect(() => {
-    fetchData(data);
-  }, [fetchData, data]);
-
+    fetchData(fetchActionPlayer('7htmA'));
+  }, [fetchData]);
+  const userInfo = useSelector(state => state.getIn(['players', 'dataPlayer']));
+  // console.log("INFO DE PLAYER " + userInfo);
   const handleChange = (event, val) => {
     setValue(val);
   };
@@ -64,11 +64,18 @@ function UserProfile(props) {
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
       </Helmet>
-      <Cover
-        coverImg={bgCover}
-        avatar={dummy.user.avatar}
-        name={dummy.user.name}
-      />
+      {
+        userInfo.count() > 0
+          ? (
+            <Cover
+              coverImg={bgCover}
+              avatar={userInfo.get('fotos').get(1)}
+              name={userInfo.get('nombre')}
+            />
+          )
+          : <p>Loading ...</p>
+      }
+
       <AppBar position="static" className={classes.profileTab}>
         <Hidden mdUp>
           <Tabs
@@ -112,7 +119,6 @@ function UserProfile(props) {
 UserProfile.propTypes = {
   classes: PropTypes.object.isRequired,
   dataProps: PropTypes.object.isRequired,
-  fetchData: PropTypes.func.isRequired,
 };
 
 const reducer = 'socmed';
@@ -121,13 +127,9 @@ const mapStateToProps = state => ({
   dataProps: state.getIn([reducer, 'dataTimeline'])
 });
 
-const constDispatchToProps = dispatch => ({
-  fetchData: bindActionCreators(fetchAction, dispatch)
-});
 
 const UserProfileMapped = connect(
   mapStateToProps,
-  constDispatchToProps
 )(UserProfile);
 
 export default withStyles(styles)(UserProfileMapped);

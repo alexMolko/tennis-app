@@ -30,7 +30,6 @@ function PersonalDashboard(props) {
     fetchData(fetchActionTop8());
   }, []);
   const top8 = useSelector(state => state.getIn(['players', 'dataTable']));
-  console.log('validando top8 ' + top8.count());
   return (
     <div>
       <Helmet>
