@@ -30,6 +30,7 @@ function ShowcaseCard(props) {
   } = props;
   const rankingPhrase = `${ranking} ${rankingNumber}`;
   const subtitlePhrase = subtitle || `${pointsNumber} ${points}`;
+  console.log('FOTOS EN SHOW ' + fotos);
   return (
     <Card className={classNames(noMargin ? classes.gutterBottom : classes.cardMedia, landscape && classes.landscapeCard)}>
       <CardMedia
