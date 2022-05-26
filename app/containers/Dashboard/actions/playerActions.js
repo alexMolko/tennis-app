@@ -8,3 +8,7 @@ export const fetchAction = () => ({
 export const fetchActionTop8 = () => ({
   type: `${types.FETCH_TOP8}`
 });
+
+export const fetchActionPlayer = () => ({
+  type: `${types.FETCH_PLAYER}`
+});
