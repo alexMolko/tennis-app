@@ -8,7 +8,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Hidden from '@material-ui/core/Hidden';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
+import CommentIcon from '@material-ui/icons/Comment';
 import Favorite from '@material-ui/icons/Favorite';
 import PhotoLibrary from '@material-ui/icons/PhotoLibrary';
 import { withStyles } from '@material-ui/core/styles';
@@ -87,7 +87,7 @@ function UserProfile(props) {
             centered
           >
             <Tab icon={<AccountCircle />} />
-            <Tab icon={<SupervisorAccount />} />
+            <Tab icon={<CommentIcon />} />
             <Tab icon={<Favorite />} />
             <Tab icon={<PhotoLibrary />} />
           </Tabs>
@@ -102,7 +102,7 @@ function UserProfile(props) {
             centered
           >
             <Tab icon={<AccountCircle />} label="GENERAL" />
-            <Tab icon={<SupervisorAccount />} label="COMENTARIOS" />
+            <Tab icon={<CommentIcon />} label="COMENTARIOS" />
             <Tab icon={<Favorite />} label="DESTACAR" />
             <Tab icon={<PhotoLibrary />} label="FOTOS" />
           </Tabs>
