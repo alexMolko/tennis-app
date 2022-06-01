@@ -28,7 +28,17 @@ import PapperBlock from '../PapperBlock/PapperBlock';
 import styles from './profile-jss';
 
 function About(props) {
-  const { classes } = props;
+  const { classes, userInfo } = props;
+  const bestSkillMap = userInfo.get('skills');
+  const skills = {
+    drive: bestSkillMap.get('Drive').get('N'),
+    reves: bestSkillMap.get('Revés').get('N'),
+    volea: bestSkillMap.get('Volea').get('N'),
+    servicio: bestSkillMap.get('Servicio').get('N'),
+    velocidad: bestSkillMap.get('Velocidad').get('N'),
+    mentalidad: bestSkillMap.get('Mentalidad').get('N')
+  };
+  const [bestSkill, skillVotos] = Object.entries(skills).reduce((a, e) => (e[1] > a[1] ? e : a));
   return (
     <Grid
       container
@@ -44,7 +54,7 @@ function About(props) {
           <Paper className={classes.styledPaper} elevation={4}>
             <Typography className={classes.title} variant="h5" component="h3">
               <span className={Type.light}>Mejor habilidad: </span>
-              <span className={Type.bold}>Drive</span>
+              <span className={Type.bold}>{bestSkill}</span>
             </Typography>
             <Grid container justify="center">
               <Chip
@@ -53,7 +63,7 @@ function About(props) {
                     <Check />
                   </Avatar>
                 )}
-                label="15 votos"
+                label={skillVotos + ' votos'}
                 className={classes.chip}
                 color="primary"
               />
@@ -62,7 +72,7 @@ function About(props) {
         </div>
         <Divider className={classes.divider} />
         {/* About Me */}
-        <PapperBlock title="Carlos Maya" icon="ion-ios-contact-outline" whiteBg noMargin desc='"Never give up!"'>
+        <PapperBlock title={userInfo.get('nickName')} icon="ion-ios-contact-outline" whiteBg noMargin desc={'"' + userInfo.get('frase') + '"'}>
           <Divider className={classes.divider} />
           <List dense className={classes.profileList}>
             <ListItem>
@@ -71,7 +81,7 @@ function About(props) {
                   <DateRange />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="Fecha de nacimiento" secondary="03 de Mayo, 1992" />
+              <ListItemText primary="Fecha de nacimiento" secondary={userInfo.get('fechaNacimiento')} />
             </ListItem>
             <ListItem>
               <ListItemAvatar>
@@ -79,7 +89,7 @@ function About(props) {
                   <LocationOn />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="De" secondary="Tampico, Tamaulipas" />
+              <ListItemText primary="De" secondary={userInfo.get('lugarNacimiento')} />
             </ListItem>
             <ListItem>
               <ListItemAvatar>
@@ -87,7 +97,7 @@ function About(props) {
                   <LocalPhone />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="Teléfono" secondary="(+55)8765432190" />
+              <ListItemText primary="Teléfono" secondary={userInfo.get('telefono')} />
             </ListItem>
           </List>
         </PapperBlock>
@@ -103,7 +113,7 @@ function About(props) {
                     <AllInclusive />
                   </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary="Juego" secondary="Diestro, Revés a una mano" />
+                <ListItemText primary="Juego" secondary={userInfo.get('estadisticas').get('Juego').get('S')} />
               </ListItem>
             </Grid>
             <Grid item md={6} sm={12}>
@@ -113,7 +123,7 @@ function About(props) {
                     <AcUnit />
                   </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary="Títulos" secondary="2" />
+                <ListItemText primary="Títulos" secondary={userInfo.get('estadisticas').get('Titulos').get('N')} />
               </ListItem>
             </Grid>
             <Grid item md={6} sm={12}>
@@ -123,7 +133,7 @@ function About(props) {
                     <Adb />
                   </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary="Puntos" secondary="1000" />
+                <ListItemText primary="Puntos" secondary={userInfo.get('puntos')} />
               </ListItem>
             </Grid>
             <Grid item md={6}>
@@ -133,7 +143,7 @@ function About(props) {
                     <AssistantPhoto />
                   </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary="Ganados/Perdidos" secondary="14/3" />
+                <ListItemText primary="Ganados/Perdidos" secondary={userInfo.get('estadisticas').get('Ganados').get('N') + '/' + userInfo.get('estadisticas').get('Perdidos').get('N')} />
               </ListItem>
             </Grid>
           </Grid>
@@ -151,6 +161,7 @@ function About(props) {
           <Grid container justify="center">
             <Button color="secondary" className={classes.button}>
 
+
               Ver todo
             </Button>
           </Grid>
@@ -161,7 +172,8 @@ function About(props) {
 }
 
 About.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  userInfo: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(About);

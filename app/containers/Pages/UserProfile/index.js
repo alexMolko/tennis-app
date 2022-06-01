@@ -40,7 +40,7 @@ TabContainer.propTypes = {
 function UserProfile(props) {
   const title = brand.name + ' - Profile';
   const description = brand.desc;
-  const { dataProps, classes } = props;
+  const { classes } = props;
   const [value, setValue] = useState(0);
 
   // Dispatcher
@@ -67,58 +67,58 @@ function UserProfile(props) {
       {
         userInfo.count() > 0
           ? (
-            <Cover
-              coverImg={bgCover}
-              avatar={userInfo.get('fotos').get(1)}
-              name={userInfo.get('nombre')}
-            />
+            <>
+              <Cover
+                coverImg={bgCover}
+                avatar={userInfo.get('fotos').get(1)}
+                name={userInfo.get('nombre')}
+              />
+              <AppBar position="static" className={classes.profileTab}>
+                <Hidden mdUp>
+                  <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    variant="fullWidth"
+                    indicatorColor="primary"
+                    textColor="primary"
+                    centered
+                  >
+                    <Tab icon={<AccountCircle />} />
+                    <Tab icon={<CommentIcon />} />
+                    <Tab icon={<Favorite />} />
+                    <Tab icon={<PhotoLibrary />} />
+                  </Tabs>
+                </Hidden>
+                <Hidden smDown>
+                  <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    variant="fullWidth"
+                    indicatorColor="primary"
+                    textColor="primary"
+                    centered
+                  >
+                    <Tab icon={<AccountCircle />} label="GENERAL" />
+                    <Tab icon={<CommentIcon />} label="COMENTARIOS" />
+                    <Tab icon={<Favorite />} label="DESTACAR" />
+                    <Tab icon={<PhotoLibrary />} label="FOTOS" />
+                  </Tabs>
+                </Hidden>
+              </AppBar>
+              {value === 0 && <TabContainer><About userInfo={userInfo} /></TabContainer>}
+              {value === 1 && <TabContainer><Favorites /></TabContainer>}
+              {value === 2 && <TabContainer><Voting /></TabContainer>}
+              {value === 3 && <TabContainer><Albums /></TabContainer>}
+            </>
           )
           : <p>Loading ...</p>
       }
-
-      <AppBar position="static" className={classes.profileTab}>
-        <Hidden mdUp>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            variant="fullWidth"
-            indicatorColor="primary"
-            textColor="primary"
-            centered
-          >
-            <Tab icon={<AccountCircle />} />
-            <Tab icon={<CommentIcon />} />
-            <Tab icon={<Favorite />} />
-            <Tab icon={<PhotoLibrary />} />
-          </Tabs>
-        </Hidden>
-        <Hidden smDown>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            variant="fullWidth"
-            indicatorColor="primary"
-            textColor="primary"
-            centered
-          >
-            <Tab icon={<AccountCircle />} label="GENERAL" />
-            <Tab icon={<CommentIcon />} label="COMENTARIOS" />
-            <Tab icon={<Favorite />} label="DESTACAR" />
-            <Tab icon={<PhotoLibrary />} label="FOTOS" />
-          </Tabs>
-        </Hidden>
-      </AppBar>
-      {value === 0 && <TabContainer><About data={dataProps} /></TabContainer>}
-      {value === 1 && <TabContainer><Favorites /></TabContainer>}
-      {value === 2 && <TabContainer><Voting /></TabContainer>}
-      {value === 3 && <TabContainer><Albums /></TabContainer>}
     </div>
   );
 }
 
 UserProfile.propTypes = {
-  classes: PropTypes.object.isRequired,
-  dataProps: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 const reducer = 'socmed';
