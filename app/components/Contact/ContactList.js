@@ -7,15 +7,12 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Tooltip from '@material-ui/core/Tooltip';
 import Avatar from '@material-ui/core/Avatar';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import SearchIcon from '@material-ui/icons/Search';
 import PermContactCalendar from '@material-ui/icons/PermContactCalendar';
-import Add from '@material-ui/icons/Add';
 import Star from '@material-ui/icons/Star';
-import IconButton from '@material-ui/core/IconButton';
 import styles from './contact-jss';
 
 function ContactList(props) {
@@ -27,8 +24,7 @@ function ContactList(props) {
     search,
     keyword,
     clippedRight,
-    addContact,
-    addFn, total
+    total
   } = props;
   const [filter, setFilter] = useState('all');
 
@@ -75,13 +71,6 @@ function ContactList(props) {
                 </div>
                 <input className={classes.input} onChange={(event) => search(event)} placeholder="Search" />
               </div>
-              {addFn && (
-                <Tooltip title="Add New Contact">
-                  <IconButton className={classes.buttonAdd} onClick={() => addContact()} color="secondary" aria-label="Delete">
-                    <Add />
-                  </IconButton>
-                </Tooltip>
-              )}
             </div>
           </div>
           <div className={classes.total}>
@@ -108,8 +97,6 @@ ContactList.propTypes = {
   dataContact: PropTypes.object.isRequired,
   keyword: PropTypes.string.isRequired,
   itemSelected: PropTypes.number.isRequired,
-  addContact: PropTypes.func,
-  addFn: PropTypes.bool,
   showDetail: PropTypes.func.isRequired,
   search: PropTypes.func.isRequired,
   clippedRight: PropTypes.bool,
@@ -117,7 +104,6 @@ ContactList.propTypes = {
 
 ContactList.defaultProps = {
   clippedRight: false,
-  addContact: () => { },
   addFn: false,
 };
 

@@ -1,5 +1,8 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable linebreak-style */
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -13,40 +16,42 @@ import Avatar from '@material-ui/core/Avatar';
 import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
-import Favorite from '@material-ui/icons/Favorite';
-import PhotoLibrary from '@material-ui/icons/PhotoLibrary';
+import DoneAll from '@material-ui/icons/DoneAll';
+import EmojiEvents from '@material-ui/icons/EmojiEvents';
+import Cancel from '@material-ui/icons/Cancel';
 import Divider from '@material-ui/core/Divider';
 import styles from './cardStyle-jss';
+
 
 function ProfileCard(props) {
   const {
     classes,
-    cover,
-    avatar,
     name,
     title,
     isVerified,
-    btnText
+    btnText,
+    fotos,
+    statistics,
+    idJugador
   } = props;
-
+  const history = useHistory();
   return (
     <Card className={classes.cardSocmed}>
       <CardMedia
         className={classes.mediaProfile}
-        image={cover}
+        image={fotos.get(0)}
         title="cover"
       />
       <CardContent className={classes.contentProfile}>
-        <Avatar alt="avatar" src={avatar} className={classes.avatarBig} />
+        <Avatar alt="avatar" src={fotos.get(2)} className={classes.avatarBig} />
         <Typography variant="h6" className={classes.name} gutterBottom>
           {name}
           {isVerified && <VerifiedUser className={classes.verified} />}
         </Typography>
         <Typography className={classes.subheading} gutterBottom>
-          <span className={Type.regular}>{title}</span>
+          <span className={Type.regular}>Ranking {title}</span>
         </Typography>
-        <Button className={classes.buttonProfile} size="large" variant="outlined" color="secondary">
+        <Button className={classes.buttonProfile} size="large" variant="outlined" color="secondary" onClick={() => history.push('/app/pages/user-profile/' + idJugador)}>
           {btnText}
         </Button>
       </CardContent>
@@ -56,23 +61,23 @@ function ProfileCard(props) {
           showLabels
           className={classes.bottomLink}
         >
-          <BottomNavigationAction label="20 Ganados" icon={<SupervisorAccount />} />
-          <BottomNavigationAction label="2 Perdidos" icon={<Favorite />} />
-          <BottomNavigationAction label="1 Campeonato" icon={<PhotoLibrary />} />
+          <BottomNavigationAction label={statistics.get('Titulos').get('N') + ' Titulos'} icon={<EmojiEvents />} />
+          <BottomNavigationAction label={statistics.get('Ganados').get('N') + ' Ganados'} icon={<DoneAll />} />
+          <BottomNavigationAction label={statistics.get('Perdidos').get('N') + ' Perdidos'} icon={<Cancel />} />
         </BottomNavigation>
       </CardActions>
     </Card>
   );
 }
-
 ProfileCard.propTypes = {
   classes: PropTypes.object.isRequired,
-  cover: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   btnText: PropTypes.string.isRequired,
-  isVerified: PropTypes.bool
+  isVerified: PropTypes.bool,
+  fotos: PropTypes.object.isRequired,
+  statistics: PropTypes.object.isRequired,
+  idJugador: PropTypes.string.isRequired,
 };
 
 ProfileCard.defaultProps = {

@@ -10,16 +10,16 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import { IntlProvider } from 'react-intl';
-
-import { makeSelectLocale } from './selectors';
+import { DEFAULT_LOCALE } from '../../i18n';
+const initialState = {
+  locale: DEFAULT_LOCALE,
+};
 
 export function LanguageProvider(props) {
   return (
     <IntlProvider
-      locale={props.locale}
+      locale={initialState.locale}
       key={props.locale}
       messages={props.messages[props.locale]}
     >
@@ -34,11 +34,5 @@ LanguageProvider.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-const mapStateToProps = createSelector(
-  makeSelectLocale(),
-  locale => ({
-    locale,
-  }),
-);
 
-export default connect(mapStateToProps)(LanguageProvider);
+export default LanguageProvider;

@@ -1,4 +1,3 @@
-
 const contactData = [
   {
     id: '1',

@@ -71,7 +71,6 @@ import {
   AreaFilledChart,
   RadarPolarCharts,
   Contact,
-  Chat,
   Email,
   TaskBoard,
   Ecommerce,
@@ -201,7 +200,6 @@ function Application(props) {
         />
         {/* Sample Apps */}
         <Route path="/app/pages/contact" component={Contact} />
-        <Route path="/app/pages/chat" component={Chat} />
         <Route path="/app/pages/email" component={Email} />
         <Route path="/app/pages/timeline" component={Timeline} />
         <Route path="/app/pages/ecommerce" component={Ecommerce} />
@@ -212,7 +210,7 @@ function Application(props) {
         <Route path="/app/pages/invoice" component={Invoice} />
         {/* Pages */}
         <Route exact path="/app/pages" component={Parent} />
-        <Route path="/app/pages/user-profile" component={Profile} />
+        <Route path="/app/pages/user-profile/:idplayer" component={Profile} />
         <Route path="/app/pages/players" component={Players} />
         <Route path="/app/pages/tournaments" exact component={Tournaments} />
         <Route path="/app/pages/tournaments/matches" component={Matches} />

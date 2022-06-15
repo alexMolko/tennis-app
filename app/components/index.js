@@ -66,8 +66,6 @@ export EmptyData from './Tables/EmptyData';
 export Notification from './Notification/Notification';
 export MaterialDropZone from './Forms/MaterialDropZone';
 export LoginForm from './Forms/LoginForm';
-export LoginFormV2 from './Forms/LoginFormV2';
-export LoginFormV3 from './Forms/LoginFormV3';
 export RegisterForm from './Forms/RegisterForm';
 export RegisterFormV2 from './Forms/RegisterFormV2';
 export RegisterFormV3 from './Forms/RegisterFormV3';
@@ -122,22 +120,13 @@ export CommercialInvoice from './DynamicInvoice/CommercialInvoice';
 export FloatingPanel from './Panel/FloatingPanel';
 export Cart from './Cart/Cart';
 // Contact
-export AddContact from './Contact/AddContact';
 export ContactList from './Contact/ContactList';
 export ContactDetail from './Contact/ContactDetail';
-// Chat
-export ChatHeader from './Chat/ChatHeader';
-export ChatRoom from './Chat/ChatRoom';
 // Email
 export EmailHeader from './Email/EmailHeader';
 export EmailSidebar from './Email/EmailSidebar';
 export EmailList from './Email/EmailList';
 export ComposeEmail from './Email/ComposeEmail';
-// Calendar
-export EventCalendar from './Calendar/EventCalendar';
-export DetailEvent from './Calendar/DetailEvent';
-export AddEvent from './Calendar/AddEvent';
-export AddEventForm from './Calendar/AddEventForm';
 // TaskBoard
 export TaskBoard from './TaskBoard/TaskBoard';
 export AddBoard from './TaskBoard/AddBoard';

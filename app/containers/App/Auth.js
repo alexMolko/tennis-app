@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Outer from '../Templates/Outer';
 import {
-  Login, LoginV2, LoginV3,
+  Login,
   Register, RegisterV2, RegisterV3,
   ResetPassword, LockScreen, ComingSoon,
   Maintenance,
@@ -14,8 +14,6 @@ function Auth() {
     <Outer>
       <Switch>
         <Route path="/login" component={Login} />
-        <Route path="/login-v2" component={LoginV2} />
-        <Route path="/login-v3" component={LoginV3} />
         <Route path="/register" component={Register} />
         <Route path="/register-v2" component={RegisterV2} />
         <Route path="/register-v3" component={RegisterV3} />

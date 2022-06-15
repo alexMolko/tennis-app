@@ -293,14 +293,6 @@ export const Login = loadable(() =>
   import ('./Pages/Users/Login'), {
     fallback: <Loading />,
   });
-export const LoginV2 = loadable(() =>
-  import ('./Pages/Users/LoginV2'), {
-    fallback: <Loading />,
-  });
-export const LoginV3 = loadable(() =>
-  import ('./Pages/Users/LoginV3'), {
-    fallback: <Loading />,
-  });
 export const Register = loadable(() =>
   import ('./Pages/Users/Register'), {
     fallback: <Loading />,
@@ -375,10 +367,6 @@ export const ResetPassword = loadable(() =>
   });
 export const LockScreen = loadable(() =>
   import ('./Pages/Users/LockScreen'), {
-    fallback: <Loading />,
-  });
-export const Chat = loadable(() =>
-  import ('./SampleApps/Chat'), {
     fallback: <Loading />,
   });
 export const Email = loadable(() =>

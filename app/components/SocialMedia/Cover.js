@@ -28,6 +28,7 @@ function Cover(props) {
     avatar,
     name,
     coverImg,
+    ranking
   } = props;
 
   const handleCloseOpt = () => {
@@ -64,18 +65,12 @@ function Cover(props) {
         </Typography>
         <div className={classes.bg}>
           <Typography variant="h6" gutterBottom>
-            <span className={Type.medium}>
-
-              Ranking
-            </span>
+            <span className={Type.medium}>Ranking</span>
 
             &nbsp;
           </Typography>
           <Typography variant="h3" gutterBottom>
-            <span className={Type.bold}>
-
-             1
-            </span>
+            <span className={Type.bold}>{ranking}</span>
           </Typography>
         </div>
       </div>
@@ -88,6 +83,7 @@ Cover.propTypes = {
   avatar: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   coverImg: PropTypes.string.isRequired,
+  ranking: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(Cover);

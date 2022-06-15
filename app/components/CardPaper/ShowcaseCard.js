@@ -19,7 +19,7 @@ function ShowcaseCard(props) {
     subtitle,
     pointsNumber,
     action,
-    image,
+    fotos,
     landscape,
     rankingNumber,
     noMargin,
@@ -30,6 +30,7 @@ function ShowcaseCard(props) {
   } = props;
   const rankingPhrase = `${ranking} ${rankingNumber}`;
   const subtitlePhrase = subtitle || `${pointsNumber} ${points}`;
+  console.log('FOTOS EN SHOW ' + fotos);
   return (
     <Card className={classNames(noMargin ? classes.gutterBottom : classes.cardMedia, landscape && classes.landscapeCard)}>
       <CardMedia
@@ -39,7 +40,7 @@ function ShowcaseCard(props) {
             extraSize ? classes.extraRounded : ''
           )
         }
-        image={image}
+        image={fotos.get(1)}
         title={title}
       />
       <CardContent>
@@ -66,7 +67,7 @@ ShowcaseCard.propTypes = {
   title: PropTypes.string.isRequired,
   pointsNumber: PropTypes.node.isRequired,
   action: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  fotos: PropTypes.object.isRequired,
   landscape: PropTypes.bool,
   noMargin: PropTypes.bool,
   extraSize: PropTypes.bool,

@@ -1,41 +1,28 @@
 /* eslint-disable linebreak-style */
 
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import brand from 'dan-api/dummy/brand';
 import { withStyles } from '@material-ui/core/styles';
 import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 import {
   Connection,
 } from 'dan-components';
 import styles from 'dan-components/SocialMedia/jss/cover-jss';
-import data from '../../SampleApps/Timeline/api/timelineData';
-import { fetchAction } from '../../SampleApps/Timeline/reducers/timelineActions';
+import { fetchAction } from '../../Dashboard/actions/playerActions';
 
-function TabContainer(props) {
-  const { children } = props;
-  return (
-    <div style={{ paddingTop: 8 * 3 }}>
-      {children}
-    </div>
-  );
-}
-
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-function Players(props) {
+function Players() {
   const title = brand.name + ' - Jugadores';
   const description = brand.desc;
-  const { fetchData } = props;
 
+  // Dispatcher
+  const fetchDataPlayers = useDispatch();
   useEffect(() => {
-    fetchData(data);
-  }, [fetchData, data]);
+    fetchDataPlayers(fetchAction());
+  }, []);
 
+  const playersData = useSelector(state => state.getIn(['players', 'dataTable']));
   return (
     <div>
       <Helmet>
@@ -46,14 +33,14 @@ function Players(props) {
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
       </Helmet>
-      <Connection />
+      {
+        playersData.count() > 0
+          ? <Connection playersData={playersData} />
+          : <p>Loading</p>
+      }
     </div>
   );
 }
-
-Players.propTypes = {
-  fetchData: PropTypes.func.isRequired,
-};
 
 const reducer = 'socmed';
 const mapStateToProps = state => ({

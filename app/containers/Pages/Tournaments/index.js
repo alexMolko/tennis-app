@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import {
   HeadlineCard, ShowcaseCard
 } from 'dan-components';
+import { List } from 'immutable';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Hidden from '@material-ui/core/Hidden';
@@ -53,6 +54,10 @@ function Tournaments(props) {
     slidesToScroll: 1
   };
   const { path } = useRouteMatch();
+
+  // Se pone esta variable fotos para los background de showcase.
+  // Acción temporal hasta que recupere imágenes de los torneos
+  const fotos = List(['/images/banners/banner4.jpg', '/images/banners/banner4.jpg']);
   return (
     <Fragment>
       <div className={classes.root}>
@@ -76,7 +81,7 @@ function Tournaments(props) {
               date="Nov 12"
               desc="Aenean facilisis vitae purus facilisis semper."
               action="Ver"
-              image="/images/banners/banner3.jpg"
+              fotos={fotos}
               href={path + '/matches'}
             />
           </Grid>
@@ -88,7 +93,7 @@ function Tournaments(props) {
               date="Nov 11"
               desc="Duis sed augue phasellus ante massa."
               action="Ver"
-              image="/images/banners/banner4.jpg"
+              fotos={fotos}
               href={path + '/playoffs'}
             />
           </Grid>
