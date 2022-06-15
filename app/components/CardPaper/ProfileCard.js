@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable linebreak-style */
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -21,6 +22,7 @@ import Cancel from '@material-ui/icons/Cancel';
 import Divider from '@material-ui/core/Divider';
 import styles from './cardStyle-jss';
 
+
 function ProfileCard(props) {
   const {
     classes,
@@ -29,8 +31,10 @@ function ProfileCard(props) {
     isVerified,
     btnText,
     fotos,
-    statistics
+    statistics,
+    idJugador
   } = props;
+  const history = useHistory();
   return (
     <Card className={classes.cardSocmed}>
       <CardMedia
@@ -47,7 +51,7 @@ function ProfileCard(props) {
         <Typography className={classes.subheading} gutterBottom>
           <span className={Type.regular}>Ranking {title}</span>
         </Typography>
-        <Button className={classes.buttonProfile} size="large" variant="outlined" color="secondary">
+        <Button className={classes.buttonProfile} size="large" variant="outlined" color="secondary" onClick={() => history.push('/app/pages/user-profile/' + idJugador)}>
           {btnText}
         </Button>
       </CardContent>
@@ -72,7 +76,8 @@ ProfileCard.propTypes = {
   btnText: PropTypes.string.isRequired,
   isVerified: PropTypes.bool,
   fotos: PropTypes.object.isRequired,
-  statistics: PropTypes.object.isRequired
+  statistics: PropTypes.object.isRequired,
+  idJugador: PropTypes.string.isRequired,
 };
 
 ProfileCard.defaultProps = {

@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import brand from 'dan-api/dummy/brand';
@@ -42,11 +43,11 @@ function UserProfile(props) {
   const description = brand.desc;
   const { classes } = props;
   const [value, setValue] = useState(0);
-
+  const { idplayer } = useParams();
   // Dispatcher
   const fetchData = useDispatch();
   useEffect(() => {
-    fetchData(fetchActionPlayer('7htmA'));
+    fetchData(fetchActionPlayer(idplayer));
   }, [fetchData]);
   const userInfo = useSelector(state => state.getIn(['players', 'dataPlayer']));
   // console.log("INFO DE PLAYER " + userInfo);
@@ -72,6 +73,7 @@ function UserProfile(props) {
                 coverImg={bgCover}
                 avatar={userInfo.get('fotos').get(1)}
                 name={userInfo.get('nombre')}
+                ranking={userInfo.get('ranking')}
               />
               <AppBar position="static" className={classes.profileTab}>
                 <Hidden mdUp>

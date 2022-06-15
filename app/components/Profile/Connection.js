@@ -21,6 +21,7 @@ function Connection(props) {
         playersData.valueSeq().map((data) => (
           <Grid item md={4} sm={6} xs={12} key={data.get('idJugador')}>
             <ProfileCard
+              idJugador={data.get('idJugador')}
               fotos={data.get('fotos')}
               name={data.get('nickName')}
               title={data.get('ranking')}
