@@ -57,7 +57,6 @@ function SidebarContent(props) {
         return classes.offline;
     }
   };
-
   return (
     <div className={classNames(classes.drawerInner, !drawerPaper ? classes.drawerPaperClose : '')}>
       <div className={classes.drawerHeader}>

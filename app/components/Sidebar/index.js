@@ -56,7 +56,6 @@ function Sidebar(props) {
     leftSidebar,
     dataMenu
   } = props;
-
   return (
     <Fragment>
       <Hidden lgUp>

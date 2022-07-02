@@ -6,13 +6,14 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { toggleAction, openAction, playTransitionAction } from 'dan-redux/actions/uiActions';
-import MegaMenuLayout from './layouts/MegaMenuLayout';
+import LeftSidebarLayout from './layouts/LeftSidebarLayout';
 import styles from './appStyles-jss';
 
-function Dashboard(props) {
+function AdminDashboard(props) {
   // Initial header style
 
   const [appHeight, setAppHeight] = useState(0);
+  const [, setOpenGuide] = useState(false);
 
   useEffect(() => {
     const { history, loadTransition } = props;
@@ -40,6 +41,11 @@ function Dashboard(props) {
       }
     };
   }, []);
+
+  const handleOpenGuide = () => {
+    setOpenGuide(true);
+  };
+
   const {
     classes,
     children,
@@ -71,7 +77,7 @@ function Dashboard(props) {
     >
       { /* Top Bar with Mega Menu */
         layout === 'mega-menu' && (
-          <MegaMenuLayout
+          <LeftSidebarLayout
             history={history}
             toggleDrawer={toggleDrawer}
             loadTransition={loadTransition}
@@ -84,16 +90,17 @@ function Dashboard(props) {
             bgPosition={bgPosition}
             place={place}
             titleException={titleException}
+            handleOpenGuide={handleOpenGuide}
           >
             { children }
-          </MegaMenuLayout>
+          </LeftSidebarLayout>
         )
       }
     </div>
   );
 }
 
-Dashboard.propTypes = {
+AdminDashboard.propTypes = {
   classes: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
   history: PropTypes.object.isRequired,
@@ -128,9 +135,9 @@ const mapDispatchToProps = dispatch => ({
   loadTransition: bindActionCreators(playTransitionAction, dispatch),
 });
 
-const DashboardMaped = connect(
+const AdminDashboardMaped = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Dashboard);
+)(AdminDashboard);
 
-export default (withStyles(styles)(DashboardMaped));
+export default (withStyles(styles)(AdminDashboardMaped));

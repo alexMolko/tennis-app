@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import NotFound from 'containers/Pages/Standalone/NotFoundDedicated';
 import Auth from './Auth';
 import Application from './Application';
+import Admin from './Admin';
 import LandingCorporate from './Landing';
 import LandingCreative from './LandingCreative';
 import ArticleNews from './ArticleNews';
@@ -17,6 +18,7 @@ function App() {
         <Route path="/landing-creative" exact component={LandingCreative} />
         <Route path="/app" component={Application} />
         <Route path="/blog" component={ArticleNews} />
+        <Route path="/admin" component={Admin} />
         <Route component={Auth} />
         <Route component={NotFound} />
       </Switch>

@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import React, { Fragment } from 'react';
 import { PropTypes } from 'prop-types';
 import classNames from 'classnames';
@@ -9,7 +10,7 @@ import {
   Sidebar,
   BreadCrumb,
 } from 'dan-components';
-import dataMenu from 'dan-api/ui/menu';
+import dataMenuAdmin from 'dan-api/ui/menuAdmin';
 import Decoration from '../Decoration';
 import styles from '../appStyles-jss';
 
@@ -48,7 +49,7 @@ function LeftSidebarLayout(props) {
         open={sidebarOpen}
         toggleDrawerOpen={toggleDrawer}
         loadTransition={loadTransition}
-        dataMenu={dataMenu}
+        dataMenu={dataMenuAdmin}
         leftSidebar
       />
       <main className={classNames(classes.content, !sidebarOpen ? classes.contentPaddingLeft : '')} id="mainContent">
