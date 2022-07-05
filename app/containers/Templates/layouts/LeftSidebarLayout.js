@@ -6,7 +6,6 @@ import Fade from '@material-ui/core/Fade';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import {
-  Header,
   Sidebar,
   BreadCrumb,
 } from 'dan-components';
@@ -27,24 +26,11 @@ function LeftSidebarLayout(props) {
     deco,
     history,
     bgPosition,
-    changeMode,
     place,
     titleException,
-    handleOpenGuide
   } = props;
   return (
     <Fragment>
-      <Header
-        toggleDrawerOpen={toggleDrawer}
-        margin={sidebarOpen}
-        gradient={gradient}
-        position="left-sidebar"
-        changeMode={changeMode}
-        mode={mode}
-        title={place}
-        history={history}
-        openGuide={handleOpenGuide}
-      />
       <Sidebar
         open={sidebarOpen}
         toggleDrawerOpen={toggleDrawer}
