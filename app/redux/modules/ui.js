@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import { fromJS, List } from 'immutable';
 import MenuContent from 'dan-api/ui/menu';
 import {

@@ -17,7 +17,6 @@ function AdminDashboard(props) {
 
   useEffect(() => {
     const { history, loadTransition } = props;
-
     // Adjust min height
     setAppHeight(window.innerHeight + 112);
 
@@ -64,6 +63,7 @@ function AdminDashboard(props) {
   const titleException = ['/app', '/app/crm-dashboard', '/app/crypto-dashboard'];
   const parts = history.location.pathname.split('/');
   const place = parts[parts.length - 1].replace('-', ' ');
+  console.log('ENTRANDO A DSHB ADMIN ' + layout);
   return (
     <div
       style={{ minHeight: appHeight }}
@@ -75,8 +75,8 @@ function AdminDashboard(props) {
         )
       }
     >
-      { /* Top Bar with Mega Menu */
-        layout === 'mega-menu' && (
+      { /* Left Sidebar Layout */
+        layout === 'left-sidebar' && (
           <LeftSidebarLayout
             history={history}
             toggleDrawer={toggleDrawer}

@@ -13,10 +13,8 @@ function Dashboard(props) {
   // Initial header style
 
   const [appHeight, setAppHeight] = useState(0);
-
   useEffect(() => {
     const { history, loadTransition } = props;
-
     // Adjust min height
     setAppHeight(window.innerHeight + 112);
 
@@ -55,6 +53,7 @@ function Dashboard(props) {
     layout,
     changeMode
   } = props;
+
   const titleException = ['/app', '/app/crm-dashboard', '/app/crypto-dashboard'];
   const parts = history.location.pathname.split('/');
   const place = parts[parts.length - 1].replace('-', ' ');

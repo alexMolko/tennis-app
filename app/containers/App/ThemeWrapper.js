@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable linebreak-style */
+import React, { useState, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import Loading from '@material-ui/core/LinearProgress';
@@ -51,18 +52,33 @@ const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 export const ThemeContext = React.createContext(undefined);
 
 function ThemeWrapper(props) {
+  const [, setProgress] = useState(0);
   const [theme, setTheme] = useState(
     // eslint-disable-next-line
     createMuiTheme(applicationTheme(props.color, props.mode, props.direction))
   );
+
   const {
     classes,
     children,
     color,
     direction
   } = props;
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((oldProgress) => {
+        if (oldProgress === 100) {
+          clearInterval(timer);
+        }
+        const diff = Math.random() * 40;
+        return Math.min(oldProgress + diff, 100);
+      });
+    }, 500);
 
-
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
   const handleChangeMode = modeParam => {
     const { changeMode } = props;
     setTheme(
@@ -72,7 +88,6 @@ function ThemeWrapper(props) {
     );
     changeMode(modeParam);
   };
-
 
   return (
     <StylesProvider jss={jss}>
