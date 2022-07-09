@@ -7,7 +7,6 @@ import Hidden from '@material-ui/core/Hidden';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import {
-  SliderWidget,
   CounterIconsWidget,
   PerformanceChartWidget,
   DateWidget,
@@ -21,7 +20,7 @@ import styles from './dashboard-jss';
 
 
 function AdminDashboard(props) {
-  const title = brand.name + ' - Personal Dashboard';
+  const title = brand.name + ' - Admin';
   const description = brand.desc;
   const { classes } = props;
   return (
@@ -40,9 +39,7 @@ function AdminDashboard(props) {
           <CounterIconsWidget />
         </Grid>
         <Grid item md={6} sm={12} xs={12}>
-          <div className={classes.sliderWrap}>
-            <SliderWidget />
-          </div>
+          <CounterIconsWidget />
         </Grid>
       </Grid>
       <Divider className={classes.divider} />
